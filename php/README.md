@@ -1,1 +1,1 @@
-This directory will contain the SQL statements to create the initial database.
+This directory will contain the PHP code for the admin user code.
