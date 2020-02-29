@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--By Yasmin Coker-->
+<html>
+<head>
+	<title>Sign Up For Girl's Day Out</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="" rel="stylesheet">
+	
+	<style>
+	</style>
+	
+	<script>
+	</script>
+	
+	<h1>Sign Up for Girl's Day Out</h1>
+
+</head>
+<body>
+<form id="signInForm" action="/application/submit" method="post">
+
+	<h2>Participant Information</h2>
+
+	<p><label for "lName">Last Name: </label><input type="text" id="lName" name="fName">
+	<label for "fName">First Name: </label><input type="text" id="fName" name="lName"></p>
+	<p><label for "addr">Address: </label><input type="text" id="addr" name="address">
+	<label for "city">City: </label><input type="text" id="city" name="city">
+	<label for "state">State: </label><input type="text" id="state" name="state">
+	<label for "zip">Zip Code: </label><input type="text" id="zip" name="zipCode"></p>
+	<p><label for "phone">*Home Phone: </label><input type="tel" id="phone" name="phoneNumber" required></p>
+	<p><label for "dob">Date of Birth: </label><input type="date" id="date" name="dateOfBirth">
+	<label for "age">Age: </label><input type="text" id="age" name="age">
+	<label for "email">Email Address: </label><input type="email" id="email"></p>
+	<p><label for "school">School: </label><input type="text" id="school" name="fallSchool">
+	<label for "ethnicity">Ethnicity: </label><input type="text" id="ethnicity" name="ethnicity">
+	<label for "parentsCollege">Did your parents go to a 4 year school?: </label><input type="text" id="parentsCollege" name="parentsCollege"></p>
+
+	<p><label for "militaryRelatives">Do you have relatives in the military?: </label><input type="text" id="militaryRelatives" name="militaryRelatives">
+	<label for "college">College of Interest: </label><input type="text" id="college" name="collegeOfInterest"></p>
+	<p><label for="risingGradeLevel">Rising Grade Level:</label><input type="text" id="risingGradeLevel" name="risingGradeLevel"></p>
+	<p><label for "allerList">List of Allergies: </p></label><textarea id="allerList" rows="5" cols="50" name="allergies"></textarea>
+	<p><label for "meds">List of Medications: </p></label><textarea id="meds" rows="5" cols="50" name="medications"></textarea>
+
+	<fieldset>
+		<legend>Participant T-Shirt Size</legend>
+		<input type="radio" name="shirtSize" value="XS">XS
+		<input type="radio" name="shirtSize" value="S">S
+		<input type="radio" name="shirtSize" value="M">M
+		<input type="radio" name="shirtSize" value="L">L
+		<input type="radio" name="shirtSize" value="XL">XL
+		<input type="radio" name="shirtSize" value="XXL">XXL
+	</fieldset><br>
+	
+	
+	<fieldset>
+		<legend>Tell us in which STEM areas you are interesed:</legend>
+		<input type="checkbox">Science
+		<input type="checkbox">Technology
+		<input type="checkbox">Engineering
+		<input type="checkbox">Mathematics
+	</fieldset>
+	
+	<h2>Parent/Guardian Information</h2>
+	<p><label for "momLName">Mother/Guardian Last Name: </label><input type="text" id="momLName" name="parentLName">
+	<label for "momFName">First Name: </label><input type="text" id="momFName" name="parentFName">
+	<label for "momEmail">*Email Address: </label><input type="email" id="momEmail" name="parentEMail" required></p>
+	<p><label for "momAddr">Address: </label><input type="text" id="momAddr" name="parentAddress">
+	<label for "momCity">City: </label><input type="text" id="momCity" name="parentCity">
+	<label for "momState">State: </label><input type="text" id="momState" name="parentState">
+	<label for "momZip">Zip Code: </label><input type="text" id="momZip" name="parentZipCode"></p>
+	<p><label for "mHPhone">*Home Phone #: </label><input type="tel" id="mHPhone" name="parentHomePhone" required>
+	<label for "mWPhone">Work Phone #: </label><input type="tel" id="mWPhone" name="parentWorkPhone">
+	<label for "mMPhone">*Mobile Phone #: </label><input type="tel" id="mMPhone" name="parentMobilePhone" required></p><br>
+	
+	<p><label for "dadLName">Father/Guardian Last Name: </label><input type="text" id="dadLName" name="otherParentLName">
+	<label for "dadFName">First Name: </label><input type="text" id="dadFName" name="otherParentFName">
+	<label for "dadEmail">Email Address: </label><input type="email" id="dadEmail"></p>
+	<p><label for "dadAddr">Address: </label><input type="text" id="dadAddr">
+	<label for "dadCity">City: </label><input type="text" id="dadCity">
+	<label for "dadState">State: </label><input type="text" id="dadState">
+	<label for "dadZip">Zip Code: </label><input type="text" id="dadZip"></p>
+	<p><label for "dHPhone">Home Phone #: </label><input type="tel" id="dHPhone">
+	<label for "dWPhone">Work Phone #: </label><input type="tel" id="dWPhone">
+	<label for "dMPhone">Mobile Phone #: </label><input type="tel" id="dMPhone"></p><br>
+
+	<h2>Emergency Contact and Release Authorization</h2>
+	<p><label for "emName">Name: </label><input type="text" id="emName" name="contactName">
+	<label for "relationship">Relationship to child: </label><input type="text" id="relationship" name="relationship"></p>
+	<p><label for "emAddr">Address: </label><input type="text" id="emAddr" name="contactAddress">
+	<label for "emCity">City: </label><input type="text" id="emCity" name="contactCity">
+	<label for "emState">State: </label><input type="text" id="emState" name="contactState">
+	<label for "emZip">Zip Code: </label><input type="text" id="emZip" name="contactZipCode"></p>
+	<p><label for "emHPhone">Home Phone #: </label><input type="tel" id="emHPhone">
+	<label for "emWPhone">Work Phone #: </label><input type="tel" id="emWPhone" name="contactWorkPhone">
+	<label for "emMPhone">Mobile Phone #: </label><input type="tel" id="emMPhone" name="contactMobilePhone">
+	<label for "initials">initials: </label><input type="text" id="initials" name="contactInitials"></p><br>
+
+	
+	<p><input type="submit" value="Submit Information" id="submitBtn"></p>
+</form>
+
+<form action="/application/all" method="get">
+	<button name="getAll" type="submit">Get All Applicant Data</button>
+</form>
+
+</body>
+</html>
+	
