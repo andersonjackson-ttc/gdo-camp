@@ -1,0 +1,36 @@
+<!DOCTYPE php>
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>Admin navigation page</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<header>
+	<h1 class="text-center">Admin navigation page</h1>
+	<nav>
+		<ul class="nav nav-justified">
+			<li class="nav-item m-auto"><a href="">Home Page</a></li>
+			<li class="nav-item m-auto"><a href="">etc</a></li>
+			<li class="nav-item m-auto"><a href="">etc</a></li>
+			<li class="nav-item m-auto"><a href="">etc</a></li>
+		</ul>
+	</nav>
+</header>
+<body>
+	<h2>Planned features for this paticualr page</h2>
+	<ul>
+		<li><p>Allow an admin to access every part of the gdo products from web pages</p></li>
+		<li><p>Changing the banner of the homepage and/or template</p></li>
+		<input class="btn btn-primary" type="submit" value="Submit">Upload new Banner</input>
+		<li><p>Pretty up this page with some bootstrap</p></li>
+		<li><p>Ability to submit a query and return data into a table, sorted if possible</p></li>
+		<li><p>Ability to edit the database records through this webpage</p></li>
+	</ul>
+	<ul class="nav">
+		<a class="btn btn-primary nav-item m-auto" href="" role="button">View Records</a>
+		<a class="btn btn-primary nav-item m-auto" href="" role="button">Edit Records</a>
+		<a class="btn btn-primary nav-item m-auto" href="" role="button">Add new Admin</a>
+	</ul>
+</body>
+</html>
