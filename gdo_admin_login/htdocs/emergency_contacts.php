@@ -1,12 +1,24 @@
-<?php include_once("includes/header.php");
-	#AUTHOR: Dustin Brown
+<?php
+    //connect to the database
+    require('../mysqli_connect_applicant_table.php');
+    include_once("includes/download_function.php"); 
+    if (isset($_POST['download'])) 
+    {
+        $q3 = "SELECT `applicant`.`first_name`, `emergency_contact`.*
+            FROM `applicant`
+            INNER JOIN `emergency_contact` ON `applicant`.`id` = `emergency_contact`.`id`";
+
+        //Pass it the query, then the connection to the db, and finally whatever you want the output to be named
+        downloadThings($q3, $dbc, "all_emergency_contacts");
+    }
+
+    include_once("includes/header.php");
+    
 	$page_title = 'Emergency Contacts'; 
-
-	//connect to the database
-	require('../mysqli_connect_applicant_table.php');
-
 	include_once ('includes/frame.html');
 ?>
+
+
     <form class="form-inline row justify-content-center" action="<?php echo htmlentities($_SERVER['PHP_SELF'])?>" method="POST">
         <div class="form-group  px-2">
             <label for="applicant_selection" style="padding-right: 1em">Student</label>
@@ -81,10 +93,20 @@
                         </div>
                     </div>
                 </form>';
+
+
            
             }
         }
 
+?>
 
 
-include_once("includes/footer.html");?>
+
+                <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF'])?>">
+
+                    <input class="float-right btn btn-primary" name="download" type="submit" value="Download All"><br>
+                </form>
+
+<?php include_once("includes/footer.html");?>
+
