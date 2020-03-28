@@ -1,7 +1,13 @@
+<?php	
+	 $page_title = 'All Applicants';
+	
+	//connect to the database
+	require('../mysqli_connect_applicant_table.php');
+?>
 <?php include_once("includes/header.php")?>
 <?php include_once("includes/frame.html")?>
 <div class="row justify-content-center">
-			<div class=" table-responsive" align="center">
+			<div class="col" align="center">
 				<h1>Basic Applicant Information</h1>
 	<form class="form-inline d-flex justify-content-center" action="fetch_applicants.php" method="post">
 	 	<label for="query">Query Type -></label>
@@ -16,10 +22,6 @@
  <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
 	{
-	 $page_title = 'All Applicants';
-	
-	//connect to the database
-	require('../mysqli_connect_applicant_table.php');
 
 	// Number of records to show per page:
 	$display = 25;
@@ -107,7 +109,8 @@ switch ($sort)
 //run the query	
 $r = @mysqli_query ($dbc, $q); // Run the query.
  
- 	echo'<table width="100%" class="table table-sm table-bordered border-default">
+ 	echo'<div class="table-responsive" style="overflow-x:auto ;">
+		<table class="table table-sm table-bordered border-default">
  		<tr class="table-dark">';
  		$x=0;
  		while ($fieldinfo = mysqli_fetch_field($r)) 
