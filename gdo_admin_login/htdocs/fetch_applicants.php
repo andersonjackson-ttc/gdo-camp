@@ -110,7 +110,7 @@ switch ($sort)
 $r = @mysqli_query ($dbc, $q); // Run the query.
  
  	echo'<div class="table-responsive" style="overflow-x:auto ;">
-		<table class="table table-sm table-bordered border-default">
+		<table class="table-sm table-bordered border-default">
  		<tr class="table-dark">';
  		$x=0;
  		while ($fieldinfo = mysqli_fetch_field($r)) 
