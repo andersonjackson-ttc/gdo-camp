@@ -1,27 +1,25 @@
-<?php	
-	 $page_title = 'All Applicants';
-	
-	//connect to the database
-	require('../mysqli_connect_applicant_table.php');
-?>
 <?php include_once("includes/header.php")?>
 <?php include_once("includes/frame.html")?>
 <div class="row justify-content-center">
 			<div class="col" align="center">
 				<h1>Basic Applicant Information</h1>
-	<form class="form-inline d-flex justify-content-center" action="fetch_applicants.php" method="post">
+	<form class="justify-content-center" action="fetch_applicants.php" method="post">
 	 	<label for="query">Query Type -></label>
 		<select name="query" class="mx-3">
-			<option value="basic">Basic</option>
-			<option value="everything">Everything</option>
-	 		<option value="firstAndLast">First & Last</option>
-	 		<option value="contactInfo">Contact Info</option>
+			<option value="basic"<?php if (($_POST["query"])=="basic"){echo "selected";}?>>Basic</option>
+			<option value="everything"<?php if (($_POST["query"])=="everything"){echo "selected";}?>>Everything</option>
+	 		<option value="firstAndLast"<?php if (($_POST["query"])=="firstAndLast"){echo "selected";}?>>First & Last</option>
+	 		<option value="contactInfo"<?php if (($_POST["query"])=="contactInfo"){echo "selected";}?>>Contact Info</option>
 	 	</select>
 	 	<button type="submit" class="btn btn-primary mb-2">Submit</button>
- 	</form>
+ 	
  <?php
 if($_SERVER['REQUEST_METHOD']=='POST')
 	{
+	 $page_title = 'All Applicants';
+	
+	//connect to the database
+	require('../mysqli_connect_applicant_table.php');
 
 	// Number of records to show per page:
 	$display = 25;
@@ -60,44 +58,53 @@ else
 }
 
 // Determine the sort
-// Default is by city.
-$sort = (isset($_POST['sort'])) ? $_POST['sort'] : 'fn';
-
-// Determine the sorting order:
-switch ($sort) 
+if (isset($_POST['sort'])==false)
 {
-	case 'fn':
-		$order_by = 'FirstName ASC';
-		break;
-	case 'ln':
-		$order_by = 'LastName ASC';
-		break;
-	case 'aller':
-		$order_by = 'Allergies ASC';
-		break;
-	case 'zip':
-		$order_by = 'ZipCode ASC';
-		break;
-	default:
-		$order_by = 'FirstName ASC';
-		$sort = 'fn';
-		break;
+	$order_by = '';
 }
+else
+{
+	$order_by = "ORDER BY ".$_POST['sort'];
+}
+
+// $sort = (isset($_POST['sort'])) ? $_POST['sort'] : 'fn';
+
+// // Determine the sorting order:
+// switch ($sort) 
+// {
+// 	case 'fn':
+// 		$order_by = 'FirstName ASC';
+// 		break;
+// 	case 'ln':
+// 		$order_by = 'LastName ASC';
+// 		break;
+// 	case 'aller':
+// 		$order_by = 'Allergies ASC';
+// 		break;
+// 	case 'zip':
+// 		$order_by = 'ZipCode ASC';
+// 		break;
+// 	default:
+// 		$order_by = 'FirstName ASC';
+// 		$sort = 'fn';
+// 		break;
+// 
+
 	if($_POST['query'] == 'everything')
 	{
-		$q = "SELECT * FROM applicant ORDER BY $order_by LIMIT $start, $display";
+		$q = "SELECT * FROM applicant $order_by LIMIT $start, $display";
 	}
 	elseif($_POST['query'] == 'basic')
 	{
-		$q = "SELECT FirstName,LastName,Address,City,State,ZipCode,PhoneNumber,DateOfBirth,Ethnicity,RisingGradeLevel FROM applicant ORDER BY $order_by LIMIT $start, $display";
+		$q = "SELECT FirstName,LastName,Address,City,State,ZipCode,PhoneNumber,DateOfBirth,Ethnicity,RisingGradeLevel FROM applicant $order_by LIMIT $start, $display";
 	}
 	elseif($_POST['query'] == 'firstAndLast')
 	{
-		$q = "SELECT FirstName, LastName FROM applicant ORDER BY $order_by LIMIT $start, $display";
+		$q = "SELECT FirstName, LastName FROM applicant $order_by LIMIT $start, $display";
 	}
 	elseif($_POST['query'] == 'contactInfo')
 	{
-		$q = "SELECT FirstName, LastName, PhoneNumber FROM applicant ORDER BY $order_by LIMIT $start, $display";
+		$q = "SELECT FirstName, LastName, PhoneNumber FROM applicant $order_by LIMIT $start, $display";
 	//add the querys for parent or emergency contact info
 	}
 	else
@@ -115,7 +122,7 @@ $r = @mysqli_query ($dbc, $q); // Run the query.
  		$x=0;
  		while ($fieldinfo = mysqli_fetch_field($r)) 
  		{
-		    echo '<th scope="col">'.$fieldinfo -> name. '</th>';
+		    echo '<th scope="col"><input class="btn btn-primary" type="submit" name="sort" value="'.$fieldinfo -> name.'"</input></th>';
 		 }
 		echo'</tr>';
 	$x=0;
@@ -157,6 +164,7 @@ else
 	echo"<p>Press Submit to replace this with Data</p>";
 }
 ?>
+</form>
  	</div>
 </div>
 <?php include_once("includes/footer.html")?>
