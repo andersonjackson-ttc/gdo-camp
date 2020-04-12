@@ -7,15 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo $page_title; ?></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="includes/font/stylesheet.css">
 </head>
 <body class="bg-dark">
-	<nav class="navbar navbar-light bg-secondary">
-  		<a class="navbar-brand text-danger" href="index.php"><img width="50" height="50" src="images/gdo_logo.png">Girls Day Out</a>
+	<nav class="navbar navbar-light bg-secondary rounded">
+  		<a class="navbar-brand" href="index.php" style="font: 38pt 'dk_nanukregular';color: #303192;"><img style="vertical-align: initial;" width="50" height="50" src="images/gdo_logo.png">Girls Day Out</a>
 		<ul class="nav nav-justified border-dark rounded ">
-			<li class="nav-item m-auto"><a class="btn btn-primary border border-dark" href="index.php">Home Page</a></li>
-			<li class="nav-item m-auto"><a class="btn btn-primary border border-dark" href="register.php">Register New Admin</a></li>
-			<li class="nav-item m-auto"><a class="btn btn-primary border border-dark" href="fetch_applicants.php">Basic Query</a></li>
-			<li class="nav-item m-auto"><a class="btn btn-primary border border-dark" href="emergency_contacts.php">Emergency Contacts</a></li>
+			<li class="nav-item m-auto"><a class="btn btn-primary border-dark" href="manage_applications.php">Manage Applications</a></li>
+			<li class="nav-item m-auto"><a class="btn btn-primary border-dark" href="register.php">Register New Admin</a></li>
+			<li class="nav-item m-auto"><a class="btn btn-primary border-dark" href="fetch_applicants.php">Reports</a></li>
+			<li class="nav-item m-auto"><a class="btn btn-primary border-dark" href="emergency_contacts.php">Emergency Contacts</a></li>
 		</ul>
 	</nav>
 
