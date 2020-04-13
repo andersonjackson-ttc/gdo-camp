@@ -42,7 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // Retrieve the user's information:
-$q = "SELECT `applicant`.*, `emergency_contact`.*, `parent`.* FROM `applicant` LEFT JOIN `emergency_contact` ON `emergency_contact`.`id` = `applicant`.`id` LEFT JOIN `parent` ON `parent`.`id` = `applicant`.`id` WHERE `applicant`.`id`=$id";		
+$q = "SELECT `applicant`.*, `emergency_contact`.*, `parent`.* 
+    FROM `applicant` 
+    LEFT JOIN `emergency_contact` ON `emergency_contact`.`id` = `applicant`.`id` 
+    LEFT JOIN `parent` ON `parent`.`id` = `applicant`.`id` 
+    WHERE `applicant`.`id`=$id";		
 $r = @mysqli_query ($dbc, $q);
 
 if (mysqli_num_rows($r) == 1) 
@@ -140,22 +144,44 @@ if (mysqli_num_rows($r) == 1)
 					
 				</article>
 				<article class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-					<p><label for="parentsCollege">Did Attend Parent College or University? </label></p>
-				</article>
-				<article class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-					<p><label for="militaryRelatives">Relatives in Military? </label></p>
-				</article>
-				<article class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-					<p><label for="allerList">List of Allergies: </label></p>
-				</article>
-				<article class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-					<p><label for="meds">List of Medications: </label></p>
-				</article>
-				<article class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-					<label for="stemInterest">Participant T-Shirt Size:</label>
-				</article>
-				<article class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-					<label for="stemInterest">Stem Interests</label>
+                    <div class="form-group row">
+                        <label for="parentsCollege" class=" col-sm-4 col-form-label">Parents Attend College?</label>
+                        <div class="col-sm-8">
+                            <label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="parentsCollege">'. @$row['parents_college'] .'</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="allerList" class=" col-sm-4 col-form-label">List of Allergies: </label>
+                        <div class="col-sm-8">
+                            <label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="allerList">'. @$row['allergies'] .'</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="shirtSize" class=" col-sm-4 col-form-label">Participant T-Shirt Size: </label>
+                        <div class="col-sm-8">
+                            <label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="shirtSize">'. @$row['shirt_size'] .'</label>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group row">
+                        <label for="militaryRelatives" class=" col-sm-4 col-form-label">Relatives in Military? </label>
+                        <div class="col-sm-8">
+                            <label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="militaryRelatives">'. @$row['relatives_in_military'] .'</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="meds" class=" col-sm-4 col-form-label">List of Medications: </label>
+                        <div class="col-sm-8">
+                            <label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="meds">'. @$row['medications'] .'</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="stemInterest" class=" col-sm-4 col-form-label">Stem Interests</label>
+                        <div class="col-sm-8">
+                            <label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="stemInterest"></label>
+                        </div>
+                    </div>
 				</article>	
 			</section>
 	</fieldset>
@@ -173,25 +199,25 @@ if (mysqli_num_rows($r) == 1)
                     <div class="form-group row">
                     	<label for="pFName1" class=" col-sm-4 col-form-label">First Name: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pFName1">'. @$row['first_name'] .'</label>
+                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pFName1">'. @$row['parent_first_name'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
                     	<label for="pEmail1" class=" col-sm-4 col-form-label">Email Address: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pEmail1">'. @$row['first_name'] .'</label>
+                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pEmail1">'. @$row['parent_email'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
                     	<label for="priPhone1" class=" col-sm-4 col-form-label">Primary Phone #: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="priPhone1">'. @$row['first_name'] .'</label>
+                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="priPhone1">'. @$row['parent_mobile_phone'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
                     	<label for="altPhone1" class=" col-sm-4 col-form-label">Alternate Phone #: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="altPhone1">'. @$row['first_name'] .'</label>
+                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="altPhone1">'. @$row['parent_home_phone'] .'</label>
                         </div>
                     </div><br>
 
@@ -202,25 +228,25 @@ if (mysqli_num_rows($r) == 1)
 					<div class="form-group row">
                     	<label for="pAddr1" class=" col-sm-4 col-form-label">Address: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pAddr1">'. @$row['first_name'] .'</label>
+                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pAddr1">'. @$row['parent_address'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
                     	<label for="pCity1" class=" col-sm-4 col-form-label">City: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pCity1">'. @$row['first_name'] .'</label>
+                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pCity1">'. @$row['parent_city'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
                     	<label for="pState1" class=" col-sm-4 col-form-label">State: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pState1">'. @$row['first_name'] .'</label>
+                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pState1">'. @$row['parent_state'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
                     	<label for="pZip1" class=" col-sm-4 col-form-label">Zip Code: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pZip1">'. @$row['first_name'] .'</label>
+                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pZip1">'. @$row['parent_zip_code'] .'</label>
                         </div>
                     </div>
 					
@@ -230,61 +256,63 @@ if (mysqli_num_rows($r) == 1)
 			<strong>Parent/Guardian 2</strong>
 			<section class="row">
 				<article class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-					<div class="form-group row">
-                    	<label for="pLName2" class=" col-sm-4 col-form-label">Last Name: </label>
+                    <div class="form-group row">
+                        <label for="pLName2" class=" col-sm-4 col-form-label">Last Name: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pLName2">'. @$row['first_name'] .'</label>
+                            <label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pLName2">'. @$row['other_parent_last_name'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
-                    	<label for="pFName2" class=" col-sm-4 col-form-label">First Name: </label>
+                        <label for="pFName2" class=" col-sm-4 col-form-label">First Name: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pFName2">'. @$row['first_name'] .'</label>
+                            <label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pFName2">'. @$row['other_parent_first_name'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
-                    	<label for="pEmail2" class=" col-sm-4 col-form-label">Email Address: </label>
+                        <label for="pEmail2" class=" col-sm-4 col-form-label">Email Address: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pEmail2">'. @$row['first_name'] .'</label>
+                            <label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pEmail2">'. @$row['other_parent_email'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
-                    	<label for="priPhone2" class=" col-sm-4 col-form-label">Primary Phone #: </label>
+                        <label for="priPhone2" class=" col-sm-4 col-form-label">Primary Phone #: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="priPhone2">'. @$row['first_name'] .'</label>
+                            <label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="priPhone2">'. @$row['other_parent_mobile_phone'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
-                    	<label for="altPhone2" class=" col-sm-4 col-form-label">Alternate Phone #: </label>
+                        <label for="altPhone2" class=" col-sm-4 col-form-label">Alternate Phone #: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="altPhone2">'. @$row['first_name'] .'</label>
+                            <label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="altPhone2">'. @$row['other_parent_home_phone'] .'</label>
                         </div>
-                    </div>
+                    </div><br>
 
-				</article>
-				<article class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-					<div class="form-group row">
-                    	<label for="pAddr2" class=" col-sm-4 col-form-label">Address: </label>
+
+                    
+                </article>
+                <article class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="form-group row">
+                        <label for="pAddr2" class=" col-sm-4 col-form-label">Address: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pAddr2">'. @$row['first_name'] .'</label>
+                            <label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pAddr2">'. @$row['other_parent_address'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
-                    	<label for="pCity2" class=" col-sm-4 col-form-label">City: </label>
+                        <label for="pCity2" class=" col-sm-4 col-form-label">City: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pCity2">'. @$row['first_name'] .'</label>
+                            <label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pCity2">'. @$row['other_parent_city'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
-                    	<label for="pState2" class=" col-sm-4 col-form-label">State: </label>
+                        <label for="pState2" class=" col-sm-4 col-form-label">State: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pState2">'. @$row['first_name'] .'</label>
+                            <label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pState2">'. @$row['other_parent_state'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
-                    	<label for="pZip2" class=" col-sm-4 col-form-label">Zip Code: </label>
+                        <label for="pZip2" class=" col-sm-4 col-form-label">Zip Code: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pZip2">'. @$row['first_name'] .'</label>
+                            <label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="pZip2">'. @$row['other_parent_zip_code'] .'</label>
                         </div>
                     </div>				
 				</article>
@@ -298,25 +326,25 @@ if (mysqli_num_rows($r) == 1)
 					<div class="form-group row">
                     	<label for="emName" class=" col-sm-4 col-form-label">Name: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="emName">'. @$row['first_name'] .'</label>
+                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="emName">'. @$row['contact_name'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
                     	<label for="relationship" class=" col-sm-4 col-form-label">Relationship to child: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="relationship">'. @$row['first_name'] .'</label>
+                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="relationship">'. @$row['contact_relationship'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
                     	<label for="emPriPhone" class=" col-sm-4 col-form-label">Primary Phone #: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="emPriPhone">'. @$row['first_name'] .'</label>
+                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="emPriPhone">'. @$row['contact_work_phone'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
                     	<label for="emAltPhone" class=" col-sm-4 col-form-label">Alternate Phone #: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="emAltPhone">'. @$row['first_name'] .'</label>
+                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="emAltPhone">'. @$row['contact_mobile_phone'] .'</label>
                         </div>
                     </div>
 
@@ -326,25 +354,25 @@ if (mysqli_num_rows($r) == 1)
 					<div class="form-group row">
                     	<label for="emAddr" class=" col-sm-4 col-form-label">Address: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="emAddr">'. @$row['first_name'] .'</label>
+                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="emAddr">'. @$row['contact_address'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
                     	<label for="emCity" class=" col-sm-4 col-form-label">City: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="emCity">'. @$row['first_name'] .'</label>
+                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="emCity">'. @$row['contact_city'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
                     	<label for="emState" class=" col-sm-4 col-form-label">State: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="emState">'. @$row['first_name'] .'</label>
+                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="emState">'. @$row['contact_state'] .'</label>
                         </div>
                     </div>
                     <div class="form-group row">
                     	<label for="emZip" class=" col-sm-4 col-form-label">Zip Code: </label>
                         <div class="col-sm-8">
-                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="emZip">'. @$row['first_name'] .'</label>
+                        	<label class="form-control-plaintext" style="color: #356f94; font-style: italic;" id="emZip">'. @$row['contact_zip_code'] .'</label>
                         </div>
                     </div>
 
