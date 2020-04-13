@@ -7,9 +7,9 @@
 	#author: Dustin Brown
 
 // Set the database access information as constants:
-DEFINE ('DB_USER', 'root');
-DEFINE ('DB_PASSWORD', '');
-DEFINE ('DB_HOST', 'localhost');
+DEFINE ('DB_USER', 'administrator');
+DEFINE ('DB_PASSWORD', 'nwicTtc8!');
+DEFINE ('DB_HOST', '192.168.6.3');
 DEFINE ('DB_NAME', 'admin_login');
 
 // Make the connection:
