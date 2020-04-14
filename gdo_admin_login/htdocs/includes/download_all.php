@@ -1,6 +1,6 @@
 <?php
 
-require('../../mysqli_connect_applicant_table.php');
+require('../../mysqli_connect_admin_table.php');
 include_once("download_function.php");
 $export_data = "SELECT `applicant`.`first_name`, `emergency_contact`.*
             FROM `applicant`
