@@ -11,7 +11,7 @@
 		$email = $dbc->real_escape_string($_POST['email']);
 		$password = $dbc->real_escape_string($_POST['password']);
 
-		$sql = $dbc->query("SELECT id, name, password FROM users WHERE email='$email'");
+		$sql = $dbc->query("SELECT id, name, password FROM admin WHERE email='$email'");
 		if ($sql->num_rows > 0) {
 		    $data = $sql->fetch_array();
 		    if (password_verify($password, $data['password'])) {
