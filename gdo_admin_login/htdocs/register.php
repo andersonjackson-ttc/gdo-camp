@@ -1,5 +1,5 @@
 <?php session_start();?>
-<?php include_once("includes/header.php")?>
+<?php include_once("includes/header.php")?> 
 <?php
 	$msg = "";
 
@@ -18,7 +18,7 @@
 			$msg = '<p class="alert-danger">Please Check Your Passwords!</p>';
 		else {
 			$hash = password_hash($password, PASSWORD_BCRYPT);
-			$dbc->query("INSERT INTO users (name,email,password) VALUES ('$name', '$email', '$hash')");
+			$dbc->query("INSERT INTO admin (name,email,password) VALUES ('$name', '$email', '$hash')");
 			$msg = "You have been registered!";
 		}
 	}
