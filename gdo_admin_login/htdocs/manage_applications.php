@@ -1,7 +1,7 @@
 <?php session_start();?>
 <?php
     //connect to the database
-    require('../mysqli_connect_applicant_table.php');
+    require('../mysqli_connect_admin_table.php');
 
     include_once("includes/header.php");
     
