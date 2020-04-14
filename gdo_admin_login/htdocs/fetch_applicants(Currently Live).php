@@ -2,7 +2,7 @@
 
 <?php
     //connect to the database
-    require('../mysqli_connect_applicant_table.php');
+    require('../mysqli_connect_admin_table.php');
     include_once("includes/download_function.php"); 
     if (isset($_POST['download']) && isset($_SESSION['query'])) 
     {
@@ -94,7 +94,7 @@ switch ($sort)
 }
 	if($_POST['query'] == 'everything')
 	{
-		$q = "SELECT `a`.`last_name` AS 'Last Name', `a`.`first_name` AS 'First Name',`a`.`address` AS 'Address',`a`.`city` AS 'City',`a`.`state` AS 'State',`a`.`zip_code` AS 'Zip Code',`a`.`phone_number` AS 'Phone Number',`a`.`date_of_birth` AS 'DOB',`a`.`age` AS 'Age', `a`.`email` AS 'Email Address',`a`.`school_attending_in_fall` AS 'School', `a`.`college_of_interest` AS 'College of Interest', `a`.`shirt_size` AS 'T-Shirt Size', CONCAT(`p`.`parent_first_name`, ' ', `p`.`parent_last_name`) AS 'Parent Name', `p`.`parent_email` AS 'Parent Email', `p`.`parent_address` AS 'Parent Address', `p`.`parent_mobile_phone` AS 'Parent Phone Number', `e`.`contact_name` AS 'Emergency Contact Name',`e`.`contact_relationship` AS 'Relationship to Child', `e`.`contact_address` AS 'Emergency Contact Address', `e`.`contact_mobile_phone` AS 'Emergency Contact Phone', `a`.`allergies` AS 'Food Allergies'
+		$q = "SELECT `a`.`last_name` AS 'Last Name', `a`.`first_name` AS 'First Name',`a`.`address` AS 'Address',`a`.`city` AS 'City',`a`.`state` AS 'State',`a`.`zip_code` AS 'Zip Code',`a`.`phone_number` AS 'Phone Number',`a`.`date_of_birth` AS 'DOB',`a`.`age` AS 'Age', `a`.`email` AS 'Email Address',`a`.`school_attending_in_fall` AS 'School', `a`.`college_of_interest` AS 'College of Interest', `a`.`shirt_size` AS 'T-Shirt Size', CONCAT(`p`.`primary_parent_first_name`, ' ', `p`.`primary_parent_last_name`) AS 'Parent Name', `p`.`primary_parent_email` AS 'Parent Email', `p`.`primary_parent_address` AS 'Parent Address', `p`.`primary_parent_primary_phone` AS 'Parent Phone Number', `e`.`contact_name` AS 'Emergency Contact Name',`e`.`contact_relationship` AS 'Relationship to Child', `e`.`contact_address` AS 'Emergency Contact Address', `e`.`contact_primary_phone` AS 'Emergency Contact Phone', `a`.`allergies` AS 'Food Allergies'
 			FROM `applicant` AS `a` 
 			LEFT JOIN `emergency_contact` AS `e` ON `e`.`id` = `a`.`id` 
 			LEFT JOIN `parent` AS `p` ON `p`.`id` = `a`.`id` ORDER BY $order_by LIMIT $start, $display";
