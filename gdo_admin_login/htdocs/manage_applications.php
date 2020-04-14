@@ -1,3 +1,4 @@
+<?php session_start();?>
 <?php
     //connect to the database
     require('../mysqli_connect_applicant_table.php');

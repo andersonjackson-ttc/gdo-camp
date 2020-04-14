@@ -1,3 +1,4 @@
+<?php session_start();?>
 <?php include_once("includes/header.php")?>
 <?php
 	$msg = "";
@@ -22,6 +23,7 @@
 		}
 	}
 ?>
+	
 		<div class="row justify-content-center">
 			<div class="col-md-6 col-md-offset-3" align="center">
 				<img width="50%" class="img-responsive" src="images/gdo_logo.png"><br><br>
