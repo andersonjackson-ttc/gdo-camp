@@ -1,7 +1,7 @@
 <?php session_start();?>
 <?php
     //connect to the database
-    require('../mysqli_connect_applicant_table.php');
+    require('../mysqli_connect_admin_table.php');
     include_once("includes/download_function.php"); 
     if (isset($_POST['download']) && isset($_SESSION['query'])) 
     {
@@ -70,13 +70,13 @@
                 <div class="form-group row">
                     <label for="mobilePhone" class="col-sm-2 col-form-label">Mobile Phone:</label>
                     <div class="col-sm-10">
-                        <label class="form-control-plaintext" id="mobilePhone">'. @$row['contact_moble_phone'] .'</label>
+                        <label class="form-control-plaintext" id="mobilePhone">'. @$row['contact_primary_phone'] .'</label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="workPhone" class="col-sm-2 col-form-label">Work Phone:</label>
                     <div class="col-sm-10">
-                        <label class="form-control-plaintext" id="workPhone">'. @$row['contact_work_phone'] .'</label>
+                        <label class="form-control-plaintext" id="workPhone">'. @$row['contact_alt_phone'] .'</label>
                     </div>
                 </div>
                 <div class="form-group row">
