@@ -8,7 +8,7 @@
     $page_title = 'Manage Applications'; 
     include_once ('includes/frame.html');
 
-echo '<a href="manage_applications.php"><button type="button" class="btn btn-primary"><-Back</button></a>';
+
     // Check for a valid user ID
 if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) 
 { 
@@ -20,24 +20,42 @@ elseif ( (isset($_POST['id'])) && (is_numeric($_POST['id'])) )
 } 
 else 
 { // No valid ID, kill the script.
-    echo '<p class="error">This page has been accessed in error.</p>';
+
+    echo '<div class="container bg-light p-3" style="margin: 5% auto; ">
+    <a href="manage_applications.php"><button type="button" class="btn btn-primary"><-Back</button></a>';
+    echo'<p class="text-danger">Something went wrong</p>';
     include ('includes/footer.html'); 
     exit();
 }
 
 // Check if the form has been submitted:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $update = $_POST['update'];
+    
+    $errors = 0;
+    
+    if (isset($_POST['update'])) {
+        $update = $_POST['update'];
+    } else {
+        $errors++;
+    }
+    if (isset($_POST['notes'])) {
+        $notes = $_POST['notes'];
+    } 
 
-        $q = "UPDATE applicant SET application_status='$update' WHERE id=$id";
+    if($errors == 0)
+    {
+        $q = "UPDATE applicant SET application_status='$update', application_notes='$notes' WHERE id=$id";
         if(mysqli_query ($dbc, $q))
         {
             
         }
         else
         {
-            echo'<p class="text-danger" class=Something went wrong</p>';
+            echo'<p class="text-danger">Something went wrong</p>';
         }
+        $errors=0;
+    }
+
     
 }
 
@@ -56,8 +74,9 @@ if (mysqli_num_rows($r) == 1)
     $row = mysqli_fetch_array ($r, MYSQLI_ASSOC);
     $status = $row['application_status'];
     echo '
+    <a href="manage_applications.php"><button type="button" class="btn btn-primary"><-Back</button></a>
     <div>
-    <h2 class="row justify-content-between" style="font: 38pt ' . "dk_nanukregular" . ';color: #303192;"><span class="col">'. @$row['first_name'] .' ' . @$row['last_name'] . '</span><span class="col text-right">Status: ' . $status . '</span></h2>
+    <h2 class="row justify-content-between logo"><span class="col">'. @$row['first_name'] .' ' . @$row['last_name'] . '</span><span class="col text-right">Status: ' . $status . '</span></h2>
     </div>
     <form class="container">
     <fieldset class="border border-dark p-2">
@@ -372,26 +391,60 @@ if (mysqli_num_rows($r) == 1)
             
             </fieldset>
             </form>
-                <form class="form-inline row justify-content-end pr-4" action="review_application.php" method="POST">
-                <div class="form-group  px-2">
-            <label for="update" style="padding-right: 1em">Decision</label>
-            <select class="form-control" id="update" name="update">
-                <option value="none" selected disabled>Select an Option</option>
-                <option>Approved</option>
-                <option>Denied</option>
-                <option>Pending</option>
+
+
+            <form class="fixed-bottom bg-secondary p-4 rounded" action="review_application.php" method="POST">
+            <div class="form-group">
+                <label for="update" class="text-center">Decision</label>
+                <select class="form-control" name="update">
+                    <option selected disabled>Select an Option</option>
+                    <option';
+                    if($status == "Approved" )
+                    { 
+                        echo 'hidden';
+                    }
+                    echo' >Approved</option>
+                
+                    <option';
+                    if($status == "Denied" )
+                    { 
+                        echo 'hidden';
+                    }
+                    echo' >Denied</option>
+
+                    <option';
+                    if($status == "Pending" )
+                    { 
+                        echo 'hidden';
+                    }
+                    echo' >Pending</option>
          
-            </select>
-        </div> 
-        <button type="submit" class="btn btn-primary">Update</button> 
-        <input type="hidden" name="id" value="' . $id . '" />
-    </form>
+                </select>
+            </div>
+            <label for="notes" class="align-top">Notes:</label>
+            <textarea name="notes" placeholder="'. @$row['application_notes'] .'"></textarea>
+            <div class="radio">
+                <label><input type="radio" name="optradio" checked>Age over/under 12-14</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optradio">Over/under rising 8th and 9th</label>
+            </div>
+            <div class="text-center"> 
+                <button type="submit" class="btn btn-primary">Update</button> 
+                <input type="hidden" name="id" value="' . $id . '" />
+            </div>
+            </form>
+
     ';
+
+    
 
 }
 else 
 { // Not a valid user ID.
-    echo '<p class="error">This page has been accessed in error.</p>';
+    echo '<div class="container bg-light p-3" style="margin: 5% auto; ">
+    <a href="manage_applications.php"><button type="button" class="btn btn-primary"><-Back</button></a>';
+    echo '<p class="text-danger">This page has been accessed in error.</p>';
 }
 
 mysqli_close($dbc);
