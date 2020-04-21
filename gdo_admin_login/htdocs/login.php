@@ -2,7 +2,7 @@
 	session_start();
 	$msg = "";
 
-	$page_title = 'PHP Password Hashing - Log In';
+	$page_title = 'Girl\'s Day Out - Log In';
 	include_once ('includes/frame.html');
 
 	if (isset($_POST['submit'])) {
@@ -28,7 +28,19 @@
 			<div class="col-md-6 col-md-offset-3" align="center">
 				<img width="50%" class="img-responsive" src="images/gdo_logo.png"><br><br>
 
-				<?php if(isset($_SESSION['username'])) header("Location: index.php");?>
+				<?php 
+				if(isset($_SESSION['username']))
+				{ 
+					if (isset($_SESSION['curPage'])) 
+					{			
+						header("Location:" .  $_SESSION['curPage']  );
+					}
+					else
+					{
+						header("Location: index.php");
+					}
+				}
+				?>
 				<?php if ($msg != "") echo $msg . "<br><br>";?>
 
 				<form method="post" action="login.php">

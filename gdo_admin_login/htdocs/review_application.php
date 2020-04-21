@@ -33,18 +33,58 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     $errors = 0;
     
-    if (isset($_POST['update'])) {
-        $update = $_POST['update'];
-    } else {
+    if (isset($_POST['update'])) 
+    {
+        $update = mysqli_real_escape_string($dbc, $_POST['update']);
+    } 
+    else 
+    {
         $errors++;
     }
-    if (isset($_POST['notes'])) {
-        $notes = $_POST['notes'];
+
+    if (empty($_POST['notes'])) 
+    {
+        $notes = NULL;
+    }
+    else
+    {
+        $notes = mysqli_real_escape_string($dbc, $_POST['notes']);
+        date_default_timezone_set('US/Eastern');
+        $date_from_timestamp = date("m/d/Y H:i:s",time());
+        $notes = $notes . '<br>-Submit on: ' . $date_from_timestamp . ' by '.$_SESSION['username'].'<br>';
+        
     } 
+
+
 
     if($errors == 0)
     {
-        $q = "UPDATE applicant SET application_status='$update', application_notes='$notes' WHERE id=$id";
+        if (isset($_POST['optradio'])) 
+        {
+            $deny = mysqli_real_escape_string($dbc, $_POST['optradio']);
+            if($notes != null)
+            {
+            $q = "UPDATE applicant SET application_status='$update', denied_reason='$deny',application_notes= CASE WHEN (application_notes IS NOT NULL) THEN CONCAT('$notes', CHAR(13), application_notes) ELSE '$notes' END WHERE id=$id";
+            }
+            else
+            {
+                $q = "UPDATE applicant SET application_status='$update', denied_reason='$deny' WHERE id=$id";
+            }
+        }
+        else
+        {
+            $deny = NULL;
+            if($notes != null)
+            {
+            $q = "UPDATE applicant SET application_status='$update', denied_reason='$deny',application_notes= CASE WHEN (application_notes IS NOT NULL) THEN CONCAT('$notes', CHAR(13), application_notes) ELSE '$notes' END WHERE id=$id";
+            }
+            else
+            {
+                $q = "UPDATE applicant SET application_status='$update', denied_reason='$deny' WHERE id=$id";
+            }
+        }
+        
+        
         if(mysqli_query ($dbc, $q))
         {
             
@@ -74,11 +114,40 @@ if (mysqli_num_rows($r) == 1)
     $row = mysqli_fetch_array ($r, MYSQLI_ASSOC);
     $status = $row['application_status'];
     echo '
-    <a href="manage_applications.php"><button type="button" class="btn btn-primary"><-Back</button></a>
+    <a href="manage_applications.php" class="btn btn-primary"><-Back</a>
+    <div class="btn-group" role="group">
+        <a id="applicationTogl" href="#" class="btn btn-primary">Application</a>
+        <a id="waiverOneTogl" href="#" class="btn btn-primary">Bosch Waiver</a>
+        <a id="waiverTwoTogl" href="#" class="btn btn-primary">Consent Waiver</a>
+        <a id="waiverThreeTogl" href="#" class="btn btn-primary">CofC Waiver</a>
+        <a id="notesTogl" href="#" class="btn btn-primary">Application Notes</a>
+
+    </div>
     <div>
     <h2 class="row justify-content-between logo"><span class="col">'. @$row['first_name'] .' ' . @$row['last_name'] . '</span><span class="col text-right">Status: ' . $status . '</span></h2>
     </div>
-    <form class="container">
+
+    <iframe src="uploaded_waivers/test.pdf" width="100%" height="100%" class="d-none" id="waiver1"></iframe> 
+    <iframe src="uploaded_waivers/Untitled.png" width="100%" height="100%" class="d-none" id="waiver2"></iframe> 
+
+    <img class="d-none" id="waiver3">
+    <div class="d-none" id="notes">
+        <fieldset class="border border-dark p-2">
+            <legend class="w-50">Application Notes</legend>
+                <section class="row">
+                <article class="col-12">
+                    <div class="form-group row">
+                        <label for="notes" class=" col-sm-2 col-form-label">Notes:</label>
+                        <div class="col-sm-10">
+                            <label class="form-control-plaintext" id="notes">'. nl2br(@$row['application_notes']) .'<br></label>
+                        </div>
+                    </div>
+                </article>
+                </section>
+        </fieldset>
+    </div>
+
+    <form class="container" id="application">
     <fieldset class="border border-dark p-2">
         <legend class="w-50">Student Information</legend>
             <section class="row">
@@ -396,23 +465,23 @@ if (mysqli_num_rows($r) == 1)
             <form class="fixed-bottom bg-secondary p-4 rounded" action="review_application.php" method="POST">
             <div class="form-group">
                 <label for="update" class="text-center">Decision</label>
-                <select class="form-control" name="update">
+                <select id="statChanger" class="form-control" name="update">
                     <option selected disabled>Select an Option</option>
-                    <option';
+                    <option value="Approved"';
                     if($status == "Approved" )
                     { 
                         echo 'hidden';
                     }
                     echo' >Approved</option>
                 
-                    <option';
+                    <option value="Denied"';
                     if($status == "Denied" )
                     { 
                         echo 'hidden';
                     }
                     echo' >Denied</option>
 
-                    <option';
+                    <option value="Pending"';
                     if($status == "Pending" )
                     { 
                         echo 'hidden';
@@ -422,17 +491,20 @@ if (mysqli_num_rows($r) == 1)
                 </select>
             </div>
             <label for="notes" class="align-top">Notes:</label>
-            <textarea name="notes" placeholder="'. @$row['application_notes'] .'"></textarea>
+            <textarea name="notes"></textarea>
+            <div id="denyOption" class="d-none" >
             <div class="radio">
-                <label><input type="radio" name="optradio" checked>Age over/under 12-14</label>
+                <label><input type="radio" name="optradio" value="Age over/under 12-14">Age over/under 12-14</label>
             </div>
             <div class="radio">
-                <label><input type="radio" name="optradio">Over/under rising 8th and 9th</label>
+                <label><input type="radio" name="optradio" value="Over/under rising 8th and 9th">Over/under rising 8th and 9th</label>
+            </div>
             </div>
             <div class="text-center"> 
                 <button type="submit" class="btn btn-primary">Update</button> 
                 <input type="hidden" name="id" value="' . $id . '" />
             </div>
+
             </form>
 
     ';

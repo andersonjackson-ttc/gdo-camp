@@ -7,4 +7,11 @@ color: #303192 !important;
 
 	right: 15px !important;
 }
+.hidden{
+	display: none !important;
+}
+.active{
+	display: block;
+}
+
 

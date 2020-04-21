@@ -6,6 +6,7 @@ if(isset($_SESSION['username']))
 }
 else
 {
+	$_SESSION['curPage'] = substr($_SERVER["REQUEST_URI"],strrpos($_SERVER["REQUEST_URI"],"/")+1);
 	echo "<script>location.href='login.php'</script>";
 }
 ?>

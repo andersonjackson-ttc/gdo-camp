@@ -17,6 +17,7 @@
         <label for="app_stat_selection" style="padding-right: 1em">Application Status</label>
             <select class="form-control" id="app_stat_selection" name="type">
                 <option value="none" selected disabled>Select an Option</option>
+                <option value="All">All</option>
                 <option value="Pending">Pending</option>
                 <option value="Approved">Approved</option>
                 <option value="Denied">Denied</option>
@@ -34,6 +35,8 @@
 if(isset($type))
 {
 
+
+
                                                 #TODO FIX PAGE ISSUE
 // Number of records to show per page:
 $display = 50;
@@ -46,7 +49,15 @@ if (isset($_GET['p']) && is_numeric($_GET['p']))
 else
 { 
     // Count the number of records:
-    $q = "SELECT COUNT(record_id) FROM applicant WHERE application_status='$type'";
+    if($type = 'All')
+    {
+        $q = "SELECT COUNT(record_id) FROM applicant";
+    }
+    else
+    {
+       $q = "SELECT COUNT(record_id) FROM applicant WHERE application_status='$type'"; 
+    }
+    
     $r = @mysqli_query ($dbc, $q);
     $row = @mysqli_fetch_array ($r, MYSQLI_NUM);
     $records = $row[0];
@@ -71,8 +82,15 @@ else
     $start = 0;
 }
 
-
-$q = "SELECT id AS 'Review', record_id AS 'Record ID', first_name AS 'First Name', last_name AS 'Last Name', application_status AS 'Application Status' FROM applicant WHERE application_status='$type'";   
+if($type == 'All')
+{
+    $q = "SELECT id AS 'Review', record_id AS 'Record ID', first_name AS 'First Name', last_name AS 'Last Name', application_status AS 'Application Status' FROM applicant";
+}
+else
+{
+   $q = "SELECT id AS 'Review', record_id AS 'Record ID', first_name AS 'First Name', last_name AS 'Last Name', application_status AS 'Application Status' FROM applicant WHERE application_status='$type'"; 
+}
+   
             
 $r = mysqli_query ($dbc, $q); 
     if ($r) 
@@ -81,7 +99,7 @@ $r = mysqli_query ($dbc, $q);
             <div class="form-group  px-2">
             <div class="table-responsive" style="overflow-x:auto ;">
             <table class="table-sm table-bordered border-default">
-            <tr class="table-dark">';
+            <tr class="table-active">';
            
         
         while ($fieldinfo = mysqli_fetch_field($r)) 
