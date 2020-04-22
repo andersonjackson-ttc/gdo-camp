@@ -1,0 +1,90 @@
+<!--Created by Matthew Hunt-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="/css/appstatus.css" rel="stylesheet" />
+    <link rel="icon" href="/images/browsericon.png" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/js/appstatus.js" type="text/javascript"></script>
+
+    <title>GDO | Application Status</title>
+  </head>
+  <body>
+    <!-- start of toolbar-->
+    <header class="toolbar">
+      <nav class="toolbar-images">
+        <div>
+          <button class="hamburger-button" id="hamburger" onclick="moveDrawer">
+            <div class="hamburger-button-line"></div>
+            <div class="hamburger-button-line"></div>
+            <div class="hamburger-button-line"></div>
+          </button>
+        </div>
+        <div class="gdo2020">
+          <p>Girl's Day Out 2020</p>
+        </div>
+        <div class="spacer"></div>
+        <div>
+          <img
+            src="/images/smallgdologo.png"
+            alt="Small Girl's Day Out Logo"
+            class="toolbar-logo"
+          />
+        </div>
+      </nav>
+    </header>
+    <!-- end of toolbar-->
+
+    <!-- Start of side drawer-->
+    <div>
+      <nav class="side-drawer" id="sidedrawer">
+        <ul>
+          <div>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="application">Apply</a>
+            </li>
+            <li>
+              <a href="photogallery">Photo Gallery</a>
+            </li>
+            <li>
+              <a href="contactus">Contact Us</a>
+            </li>
+            <li>
+              <a href="faqs">FAQs</a>
+            </li>
+          </div>
+          <div class="spacer"></div>
+          <div>
+            <li class="image2">
+              <img
+                src="/images/gdologo.png"
+                alt="Girl's Day Out 2020 Logo"
+                class="side-drawer-image"
+              />
+            </li>
+          </div>
+        </ul>
+      </nav>
+      <div id="backdrop" onclick="moveDrawer"></div>
+    </div>
+    <!-- end of side drawer-->
+
+    <!-- start of div for content -->
+    <div class="content">
+      <div class="status">
+        <h1>2020 Girl's Day Out Application Status</h1>
+
+        <p id="feedback" class="feedback">
+          <!-- Updated in JS -->
+        </p>
+      </div>
+    </div>
+    <!-- end of div for content-->
+  </body>
+</html>

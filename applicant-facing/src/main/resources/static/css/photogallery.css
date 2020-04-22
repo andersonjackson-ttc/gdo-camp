@@ -1,0 +1,169 @@
+.hamburger-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 24px;
+  width: 30px;
+  background: transparent;
+  border: none; /* getting rid of default border*/
+  cursor: pointer;
+  padding: 0; /* changing default padding to 0*/
+  box-sizing: border-box;
+}
+
+.hamburger-button:focus {
+  outline: none;
+}
+
+.hamburger-button-line {
+  width: 30px;
+  height: 3px;
+  background: #2a2d78;
+}
+
+.toolbar {
+  display: none;
+}
+
+.toolbar-logo {
+  height: 42px;
+  margin: 0.2rem 0 0 0.5rem;
+}
+
+.toolbar-images {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.side-drawer {
+  height: 100%;
+  background: #f4f186;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  max-width: 250px;
+  z-index: 200;
+  margin-right: 10rem;
+}
+
+.side-drawer-image {
+  height: 90%;
+  width: 90%;
+  margin-bottom: 1.5rem;
+  margin-left: 2rem;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.side-drawer.open {
+  transform: translateX(0);
+}
+
+.side-drawer ul {
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-drawer li {
+  width: 100%;
+  margin-left: -2.5rem;
+}
+
+.gdo2020 {
+  color: #2a2d78;
+  font-variant: small-caps;
+  padding-left: 0.5rem;
+  padding-top: 0.1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.side-drawer a {
+  display: block;
+  width: 100%;
+  color: #2a2d78;
+  font-variant: small-caps;
+  padding: 1.2rem 0;
+  padding-left: 2.5rem;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.side-drawer a:hover,
+.side-drawer a:active {
+  /* color: white; */
+  background-color: #6d5493;
+  color: white;
+}
+
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 100;
+}
+
+.content {
+  margin-left: 270px;
+}
+
+@media (min-width: 1025px) {
+  .hamburger-button {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .side-drawer {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in;
+  }
+  .toolbar {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #f4f186;
+    height: 56px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+  }
+  .backdrop {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .backdrop:hover {
+    cursor: pointer;
+  }
+
+  .content {
+    margin-top: 64px;
+    margin-left: 1px;
+  }
+}
+
+@media (max-height: 450px) {
+  .side-drawer a {
+    font-size: 1rem;
+    padding: 0.7rem 0;
+    padding-left: 2.5rem;
+  }
+  .side-drawer-image {
+    height: 60%;
+    width: 60%;
+    margin-bottom: 1.5rem;
+    margin-left: 4rem;
+  }
+}

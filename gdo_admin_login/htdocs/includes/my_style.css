@@ -1,0 +1,17 @@
+.logo{
+font: 38pt 'dk_nanukregular';
+color: #303192 !important;
+}
+.fixed-bottom{
+	left:auto !important;
+
+	right: 15px !important;
+}
+.hidden{
+	display: none !important;
+}
+.active{
+	display: block;
+}
+
+
