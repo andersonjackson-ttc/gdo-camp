@@ -87,7 +87,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         if(mysqli_query ($dbc, $q))
         {
+            $q = "SELECT `primary_parent_email` FROM `parent` WHERE `applicant`.`id`=$id";        
+            $r = @mysqli_query ($dbc, $q);
+            if (mysqli_num_rows($r) == 1) 
+            { // Valid user ID, show the form.
+
+            // Get the user's information:
+            $row = mysqli_fetch_array ($r, MYSQLI_ASSOC);
+            $email = $row['primary_parent_email'];
             
+            
+            $msg = "Your Girls' Day Out application has been reviewed. Please Check the Status Page of you GDO applications for further information.";
+            $msg = wordwrap($msg, 70);
+            mail($email, "Update to your GDO Application", $msg);
+            }
         }
         else
         {
@@ -113,6 +126,25 @@ if (mysqli_num_rows($r) == 1)
     // Get the user's information:
     $row = mysqli_fetch_array ($r, MYSQLI_ASSOC);
     $status = $row['application_status'];
+    $recId = $row['record_id'];
+    $waiverStatus = $row['waiver_status'];
+
+    if($waiverStatus == 'Not Submitted')
+    {
+    echo '
+    <a href="manage_applications.php" class="btn btn-primary"><-Back</a>
+    <div class="btn-group" role="group">
+        <a id="applicationTogl" href="#" class="btn btn-primary">Application</a>
+
+        <a id="notesTogl" href="#" class="btn btn-primary">Application Notes</a>
+
+    </div>
+    <div>
+    <h2 class="row justify-content-between logo"><span class="col">'. @$row['first_name'] .' ' . @$row['last_name'] . '</span><span class="col text-right">Status: ' . $status . '</span></h2>
+    </div>';
+    }
+    else
+    {
     echo '
     <a href="manage_applications.php" class="btn btn-primary"><-Back</a>
     <div class="btn-group" role="group">
@@ -127,10 +159,12 @@ if (mysqli_num_rows($r) == 1)
     <h2 class="row justify-content-between logo"><span class="col">'. @$row['first_name'] .' ' . @$row['last_name'] . '</span><span class="col text-right">Status: ' . $status . '</span></h2>
     </div>
 
-    <iframe src="uploaded_waivers/test.pdf" width="100%" height="100%" class="d-none" id="waiver1"></iframe> 
-    <iframe src="uploaded_waivers/Untitled.png" width="100%" height="100%" class="d-none" id="waiver2"></iframe> 
+    <iframe src="uploadedwaivers/' . $recId . '-BoschWaiver" width="100%" height="100%" class="d-none" id="waiver1"></iframe> 
+    <iframe src="uploadedwaivers/' . $recId . '-CofCWaiver" width="100%" height="100%" class="d-none" id="waiver2"></iframe> 
+    <iframe src="uploadedwaivers/' . $recId . '-ConsentWaiver" width="100%" height="100%" class="d-none" id="waiver3"></iframe>';
 
-    <img class="d-none" id="waiver3">
+    }
+    echo '
     <div class="d-none" id="notes">
         <fieldset class="border border-dark p-2">
             <legend class="w-50">Application Notes</legend>
@@ -498,6 +532,9 @@ if (mysqli_num_rows($r) == 1)
             </div>
             <div class="radio">
                 <label><input type="radio" name="optradio" value="Over/under rising 8th and 9th">Over/under rising 8th and 9th</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optradio" value="Waiver(s) Unsigned or Improperly Submit">Waiver Issue</label>
             </div>
             </div>
             <div class="text-center"> 
