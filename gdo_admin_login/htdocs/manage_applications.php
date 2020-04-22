@@ -49,7 +49,7 @@ if (isset($_GET['p']) && is_numeric($_GET['p']))
 else
 { 
     // Count the number of records:
-    if($type = 'All')
+    if($type == 'All')
     {
         $q = "SELECT COUNT(record_id) FROM applicant";
     }
@@ -84,11 +84,11 @@ else
 
 if($type == 'All')
 {
-    $q = "SELECT id AS 'Review', record_id AS 'Record ID', first_name AS 'First Name', last_name AS 'Last Name', application_status AS 'Application Status' FROM applicant";
+    $q = "SELECT id AS 'Review', record_id AS 'Record ID', first_name AS 'First Name', last_name AS 'Last Name', application_status AS 'Application Status', waiver_status AS 'Waiver Status' FROM applicant ORDER BY application_status";
 }
 else
 {
-   $q = "SELECT id AS 'Review', record_id AS 'Record ID', first_name AS 'First Name', last_name AS 'Last Name', application_status AS 'Application Status' FROM applicant WHERE application_status='$type'"; 
+   $q = "SELECT id AS 'Review', record_id AS 'Record ID', first_name AS 'First Name', last_name AS 'Last Name', application_status AS 'Application Status', waiver_status AS 'Waiver Status' FROM applicant WHERE application_status='$type'"; 
 }
    
             
@@ -128,6 +128,7 @@ $r = mysqli_query ($dbc, $q);
                     <td>' . $row[2] . '</td>  
                     <td>' . $row[3] . '</td> 
                     <td>' . $row[4] . '</td> 
+                    <td>' . $row[5] . '</td> 
 
             </tr>';
             $x++;
