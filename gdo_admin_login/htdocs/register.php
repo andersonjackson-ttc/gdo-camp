@@ -1,10 +1,10 @@
 <?php session_start();?>
-<?php //include_once("includes/header.php")?> 
+<?php include_once("includes/header.php")?> 
 <?php
 	$msg = "";
 
 	$page_title = 'PHP Password Hashing - Register';
-	//include_once ('includes/frame.html');
+	include_once ('includes/frame.html');
 
 	if (isset($_POST['submit'])) {
 		require('../mysqli_connect_admin_table.php');
@@ -17,17 +17,22 @@
 		if(isset($_POST['approverCheck']))
 		{
 			$approver = $dbc->real_escape_string($_POST['approverCheck']);
+			if($approver == '1')
+			{
+				$job = 'approver';
+			}
 		}
 		else
 		{
 			$approver = '0';
+			$job = NULL;
 		}
 
 		if ($password != $cPassword)
 			$msg = '<p class="alert-danger">Please Check Your Passwords!</p>';
 		else {
 			$hash = password_hash($password, PASSWORD_BCRYPT);
-			$dbc->query("INSERT INTO admin (name,email,password,type,approver) VALUES ('$name', '$email', '$hash','$type','$approver')");
+			$dbc->query("INSERT INTO admin (name,email,password,type,job) VALUES ('$name', '$email', '$hash','$type','$job')");
 			$msg = "You have been registered!";
 		}
 	}
@@ -56,12 +61,11 @@
 					<p>Approver <input type="checkbox" id="approverCheck" name="approverCheck" value="1" /><p>
 					<input class="btn btn-primary" name="submit" type="submit" value="Register..."><br>
 				</form>
-
 			</div>
 		</div>
 	</div>
-	<?php //include_once("includes/footer.html")?>
-<script>
+	<?php include_once("includes/footer.html")?>
+	<script>
     function updateCheckBox(dropDownOptions) {
         if (dropDownOptions.value == 'admin') {
             approverCheck.disabled = false;
