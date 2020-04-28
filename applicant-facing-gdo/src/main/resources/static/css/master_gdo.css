@@ -1,0 +1,1101 @@
+html {
+  background-color: #e2e2e2;
+}
+
+/* Gradient background for contact page */
+.contactbackground {
+  background-image: linear-gradient(#bba2e0, #4c85ac);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100%;
+}
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Logo behind text windows on the home page and FAQ page */
+.home-background {
+  background-image: url("/images/smallgdologo.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 30%;
+  /* Centers background image factoring in the margin-left from side-drawer being fixed open*/
+  background-position: calc(50% + 150px) 50%;
+}
+
+/* transparent overlay for home/FAQ background image */
+.overlay {
+  background: rgba(255, 255, 255, 0.719);
+  position: fixed;
+  width: 100%;
+  min-height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* Start of Navigation */
+.hamburger-button {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 24px;
+  width: 30px;
+  background: transparent;
+  border: none; /* getting rid of default border*/
+  cursor: pointer;
+  padding: 0; /* changing default padding to 0*/
+  box-sizing: border-box;
+}
+
+.hamburger-button:focus {
+  outline: none;
+}
+
+.hamburger-button-line {
+  width: 30px;
+  height: 3px;
+  background: #2a2d78;
+}
+
+.toolbar {
+  display: none;
+}
+
+.toolbar-logo {
+  height: 42px;
+  margin: 0.2rem 0 0 0.5rem;
+}
+
+.toolbar-images {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.side-drawer {
+  height: 100%;
+  background: #f4f186;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  max-width: 250px;
+  z-index: 200;
+  margin-right: 10rem;
+}
+
+.side-drawer-image {
+  height: 90%;
+  width: 90%;
+  margin-bottom: 1.5rem;
+  margin-left: 2rem;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.side-drawer.open {
+  transform: translateX(0);
+}
+
+.side-drawer ul {
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-drawer li {
+  width: 100%;
+  margin-left: -2.5rem;
+}
+
+.gdo2020 {
+  color: #2a2d78;
+  font-variant: small-caps;
+  padding-left: 0.4em;
+  padding-top: 0.1em;
+  font-family: "dk_nanukregular";
+  font-size: 1.75em;
+  font-weight: bold;
+}
+
+.side-drawer a {
+  display: block;
+  width: 100%;
+  color: #2a2d78;
+  font-variant: small-caps;
+  padding: 1.2rem 0;
+  padding-left: 2.5rem;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.side-drawer a:hover,
+.side-drawer a:active {
+  /* color: white; */
+  background-color: #6d5493;
+  color: white;
+}
+
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 100;
+}
+/* End of Navigation */
+
+/* Start of Shared Content */
+.content {
+  margin-left: 270px;
+}
+
+.feedback {
+  font-size: 1.75rem;
+}
+/* End of shared content */
+
+/* Start of application page content */
+/* form shares h1 css with faq */
+.form h1 {
+  margin: 0;
+  padding-top: 5px;
+  display: inline-block;
+  color: #6d5493;
+  font-size: 3rem;
+  font-family: "dk_nanukregular";
+  font-weight: bold;
+}
+
+.form-section-container {
+  width: 97%;
+  margin: auto;
+  border: 3px solid #6d5493;
+  border-radius: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+}
+
+.form-section-container h2 {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #2a2d78;
+}
+
+.form-section-container h3 {
+  text-transform: uppercase;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #2a2d78;
+}
+
+.participant-section {
+  display: flex;
+  height: 875px;
+}
+
+.parent-section {
+  display: flex;
+  height: 350px;
+}
+
+.contact-section {
+  display: flex;
+  height: 300px;
+}
+
+.flex-section {
+  width: 45%;
+  margin: 0 auto;
+  font-size: 1.2rem;
+}
+
+.flex-section label {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #2a2d78;
+}
+
+.flex-section input[type="text"],
+.flex-section input[type="email"],
+.flex-section input[type="tel"],
+.flex-section input[type="date"],
+.flex-section input[type="number"],
+.flex-section select {
+  width: 100%;
+  padding: 0 20px;
+  height: 32px;
+  margin-bottom: 15px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.flex-section input[type="radio"] {
+  margin-top: 8px;
+  margin-bottom: 26px;
+}
+
+.flex-section textarea {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.school-dropdown {
+  height: 32px;
+  margin-bottom: 15px;
+}
+
+.app-submit-btn {
+  background-color: #6d5493;
+  color: white;
+  cursor: pointer;
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #2a2d78;
+  text-align: center;
+  font-family: "dk_nanukregular";
+  font-size: 1.8rem;
+}
+
+.app-submit-btn:hover {
+  background-color: #7b659d;
+}
+
+.app-submit-btn:active {
+  background-color: #6d5493;
+}
+
+fieldset {
+  font-size: 1.2rem;
+  width: 70%;
+  margin: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #2a2d78;
+}
+/* End of application page content */
+
+/* Start of application status page content */
+.status {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.status h1 {
+  font-family: "dk_nanukregular";
+  color: #6d5493;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.status button {
+  margin-top: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  background: #6d5493;
+  color: #f4f186;
+  padding: 20px 25px;
+}
+
+.status button:hover {
+  background-color: #8a76a8;
+}
+/* End of application status page content */
+
+/* Start of contact form page content */
+.contactform {
+  display: block;
+  text-align: center;
+  margin: 25px 0;
+  color: white;
+}
+
+.contactform h1 {
+  margin: 10px 0;
+  color: white;
+  font-family: "dk_nanukregular";
+  font-size: 3rem;
+  font-weight: normal;
+  text-shadow: 1px 1px 5px black;
+}
+
+.contactform p {
+  width: 60%;
+  margin: auto;
+  font-size: 1.75rem;
+  margin-bottom: 30px;
+}
+
+.contactform form {
+  display: inline-block;
+  text-align: left;
+  width: 60%;
+  font-size: 1.2rem;
+}
+
+.contactform input[type="text"],
+.contactform input[type="email"] {
+  height: 30px;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.contactform textarea {
+  width: 100%;
+  margin-top: 5px;
+  font-size: 1.2rem;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.contactform input[type="submit"] {
+  background-color: #6d5493;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 1.2rem;
+  font-variant: small-caps;
+}
+
+.contactform input[type="text"]:focus,
+.contactform input[type="email"]:focus,
+.contactform textarea:focus {
+  outline: none;
+  border: 2px solid #6d5493;
+}
+
+.contactform input[type="submit"]:hover {
+  background-color: #7b659d;
+}
+
+.contactform input[type="submit"]:active {
+  background-color: #6d5493;
+}
+/* End of contact form css*/
+
+/* Start of FAQ page css */
+.faq {
+  text-align: center;
+}
+
+.faq h1 {
+  margin: 0;
+  padding-top: 5px;
+  display: inline-block;
+  color: #6d5493;
+  font-size: 3rem;
+  font-family: "dk_nanukregular";
+  font-weight: bold;
+}
+
+.searchbox {
+  background-image: url("/images/searchicon.png");
+  background-repeat: no-repeat;
+  background-position: 2px 8px;
+  background-size: 30px;
+  margin-top: 20px;
+  width: 50%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.searchbox:focus {
+  outline: none;
+  border: 3px solid #6d5493;
+}
+
+.expand:first-of-type {
+  margin-right: 15px;
+}
+
+.expand {
+  background-color: #6d5493;
+  color: white;
+  cursor: pointer;
+  padding: 5px 15px;
+  font-size: 1rem;
+  margin-bottom: -10px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.expand:focus {
+  outline: none;
+}
+
+.expand:active {
+  background-color: #6d5493 !important;
+}
+
+.collapsible {
+  background-color: #6d5493;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 85%;
+  border: 2px solid black;
+  text-align: left;
+  outline: none;
+  font-size: 1.2rem;
+  margin-top: 30px;
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
+.active,
+.expand:hover,
+.collapsible:hover {
+  background-color: #8a76a8;
+}
+
+.collapsible:after {
+  content: "\002B";
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.answer {
+  max-height: 0;
+  width: 85%;
+  margin: 0 auto;
+  overflow: hidden;
+  box-sizing: border-box;
+  text-align: left;
+  transition: max-height 0.2s ease-out;
+  background-color: white;
+  font-size: 1.2rem;
+}
+
+.answer p {
+  padding: 10px 12px;
+}
+/* End of FAQ page css*/
+
+/* Start of home page css */
+.home-content {
+  margin-left: 250px;
+  z-index: 0;
+}
+
+.home-banner {
+  position: relative;
+  background-color: #9c9c9c;
+}
+.home-header {
+  width: 650px;
+  margin: 0 auto;
+  color: white;
+  background-color: #6d5493dd;
+  text-align: center;
+  font-family: "dk_nanukregular";
+  font-size: 3rem;
+  font-weight: bold;
+
+  /*sets the header to be in the middle of the banner image*/
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.home-banner img {
+  width: 100%;
+  display: block;
+  opacity: 0.8;
+}
+
+.home-block {
+  background: #e2e2e2cc;
+  border-top: 3px solid #574375;
+  border-bottom: 3px solid #574375;
+  width: 100%;
+  text-align: center;
+}
+
+.home-block-text {
+  padding: 200px 0;
+  color: #6d5493;
+  text-align: center;
+  font-family: "Gotu", sans-serif;
+}
+
+.home-block-text h3 {
+  width: 80%;
+  margin: auto;
+  font-size: 2rem;
+  font-variant: small-caps;
+  font-weight: normal;
+}
+
+.home-block-text p {
+  width: 70%;
+  margin: auto;
+  line-height: 1.5;
+  font-size: 1.5rem;
+}
+
+.home-block-text ul {
+  width: 60%;
+  margin: auto;
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+.home-block-text li {
+  padding: 10px 0;
+}
+
+.home-block button {
+  background-color: #6d5493;
+  color: white;
+  margin-top: 30px;
+  padding: 5px 60px;
+  font-family: "dk_nanukregular";
+  font-size: 3rem;
+  border: 2px solid #2a2d78;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.home-block button:hover {
+  border: 3px solid #2a2d78;
+  background-color: #8a76a8;
+}
+
+.home-block button:active {
+  background-color: #6d5493;
+}
+
+.stem-images {
+  background-color: #6d5493;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.stem-images div {
+  position: relative;
+  width: 100%;
+}
+
+.stem-images img {
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.stem-images img:nth-child(even) {
+  border-left: 3px solid #574375;
+}
+
+.stem-images img:nth-child(odd) {
+  border-right: 3px solid #574375;
+}
+
+.stem-caption {
+  color: white;
+  width: 100%;
+  margin-top: 0;
+  text-align: center;
+  font-size: 3rem;
+  font-family: "dk_nanukregular";
+
+  /* gets text centered horiz/vert in div next to images */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.home-footer {
+  background: rgb(80, 80, 80);
+}
+
+.home-footer p {
+  font-family: arial;
+  padding: 50px 0;
+  width: 80%;
+  margin: auto;
+  color: white;
+  line-height: 1.2;
+}
+/* End of home page css */
+
+/* Start of submit page css (page viewed after application submitted)*/
+.submit {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.submit h1 {
+  font-size: 2.5rem;
+  font-family: "dk_nanukregular";
+  color: #6d5493;
+}
+
+.submit h2 {
+  margin-top: 40px;
+  margin-bottom: 5px;
+  font-size: 2rem;
+  font-family: "dk_nanukregular";
+  color: #6d5493;
+}
+.submit p {
+  margin: 0;
+}
+
+.submit button {
+  margin-top: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.feedback a:visited {
+  color: #0000ee;
+}
+
+.now {
+  background: #6d5493;
+  color: #f4f186;
+  padding: 20px 25px;
+}
+
+.later {
+  margin-left: 15px;
+  background: #bdbdbd;
+  color: black;
+  padding: 20px 23px;
+}
+
+.now:hover {
+  background-color: #8a76a8;
+}
+
+.later:hover {
+  background-color: #d7d7d7;
+}
+/* End of submit page css */
+
+/* Start of Waiver page css */
+.waivers {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.waivers h1 {
+  font-family: "dk_nanukregular";
+  color: #6d5493;
+  font-size: 3rem;
+}
+
+.waivers img {
+  width: 100%;
+  padding-bottom: 3px;
+}
+
+.waivers figcaption {
+  font-weight: bold;
+}
+
+.download {
+  padding-top: 1rem;
+  display: flex;
+  flex: 0 1 20%;
+  justify-content: space-around;
+}
+
+.download a {
+  font-size: 0.9rem;
+  margin: 0 0.5em;
+  text-decoration: none;
+  color: black;
+}
+
+.upload {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.waiver-form {
+  border: 2px solid black;
+  background-color: #d3cbde;
+}
+.waiver-form h2 {
+  text-align: center;
+  font-variant: small-caps;
+}
+.waiver-form div {
+  margin: 1rem;
+  margin-left: 4rem !important;
+  text-align: left;
+}
+
+.waiver-form label {
+  font-weight: bold;
+}
+
+.waiver-form input[type="submit"] {
+  background-color: #6d5493;
+  color: white;
+  margin: 1em;
+  padding: 0.2rem 1rem;
+  border: 2px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.waiver-form input[type="submit"]:hover {
+  background-color: #8a76a8;
+}
+/* End of Waiver page css */
+
+/* START OF MEDIA QUERIES */
+
+/* Enlarges text/headers on home page when viewed on a very large window */
+@media (min-width: 1700px) {
+  .home-header {
+    width: 1100px;
+    font-size: 5rem;
+  }
+  .home-block-text h3 {
+    font-size: 3rem;
+  }
+
+  .home-block-text p {
+    line-height: 1.5;
+    font-size: 2.5rem;
+  }
+
+  .home-block-text ul {
+    font-size: 2rem;
+  }
+
+  .stem-caption {
+    font-size: 4.5rem;
+  }
+
+  .home-footer p {
+    font-size: 1.5rem;
+  }
+}
+
+/* navigation query -> changes to toolbar at top and sidedrawer hidden. Home/FAQ elements included */
+@media (max-width: 1024px) {
+  /* Gets background image centered again when sidedrawer goes away*/
+  .home-background {
+    background-position: center;
+  }
+
+  .hamburger-button {
+    display: flex;
+  }
+
+  .side-drawer {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in;
+  }
+
+  .toolbar {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #f4f186;
+    height: 56px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+    transition: 0.7s;
+    z-index: 100;
+  }
+
+  .backdrop {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .backdrop:hover {
+    cursor: pointer;
+  }
+
+  .content {
+    margin-top: 64px;
+    margin-left: 1px;
+  }
+
+  .home-content {
+    margin-top: 56px;
+    margin-left: 0;
+  }
+
+  /* FAQ element*/
+  .collapsible {
+    font-size: 1rem;
+  }
+}
+/* End of navigation/home/faq media query */
+
+/* Waiver form media query */
+@media screen and (max-width: 825px) {
+  .waiver-form h2 {
+    padding: 0 0.5rem;
+    font-size: 1.25rem;
+  }
+  .waiver-form div {
+    margin: 1rem !important;
+  }
+
+  .waiver-form input[type="file"] {
+    background-color: #6d5493;
+    color: white;
+    margin: 1em 1em 1em 0;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}
+
+/* Home page media query */
+@media (max-width: 800px) {
+  .home-block-text h3 {
+    font-size: 1.75rem;
+  }
+
+  .home-block-text ul {
+    font-size: 1rem;
+  }
+}
+
+/* Form media query -> changes to 1 column instead of 2 columns side by side */
+@media (max-width: 750px) {
+  .form-section-container {
+    width: 80%;
+  }
+
+  .form-section-container h2 {
+    font-size: 1.5rem;
+  }
+  .participant-section {
+    display: block;
+    height: 100%;
+  }
+
+  .parent-section {
+    display: block;
+    height: 100%;
+  }
+
+  .contact-section {
+    display: block;
+    height: 100%;
+  }
+
+  .flex-section {
+    width: 90%;
+  }
+
+  /* css for 2nd button on submit page*/
+  .later {
+    margin-left: 0;
+  }
+}
+
+/* media query for home page when it hits windows 700px or less */
+@media (max-width: 700px) {
+  .home-background {
+    background-size: 50%;
+  }
+  .home-banner {
+    position: static;
+    background-color: #6d5493;
+    border-bottom: 3px solid #574375;
+  }
+  .home-header {
+    width: 80%;
+    padding: 10px 0;
+    /*sets the header to be in the middle of the banner image*/
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+
+  .home-banner img {
+    display: none;
+  }
+
+  .home-block {
+    border: 0;
+  }
+
+  .home-block-text {
+    padding: 50px 0;
+  }
+
+  .home-block button {
+    padding: 5px 40px;
+    font-size: 2.5rem;
+  }
+
+  .stem-images {
+    display: block;
+    border: 3px solid #574375;
+    box-sizing: border-box;
+  }
+
+  .stem-images img {
+    display: block;
+    width: 100%;
+  }
+
+  .stem-caption {
+    /* font-size: rem; */
+    margin: 15px auto;
+    position: static;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+
+  .stem-images div {
+    position: static;
+    width: 100%;
+  }
+
+  .stem-images img:nth-child(even) {
+    border-top: 3px solid #574375;
+    border-left: 0;
+  }
+
+  .stem-images img:nth-child(odd) {
+    border-bottom: 3px solid #574375;
+    border-right: 0;
+  }
+}
+
+/* Media query for contact form and waiver form page */
+@media (max-width: 600px) {
+  .contactform p {
+    width: 80%;
+  }
+
+  .contactform form {
+    width: 80%;
+  }
+
+  /* waiver form element*/
+  .upload {
+    width: 80%;
+  }
+}
+
+/* Media query for FAQ page */
+@media (max-width: 550px) {
+  .searchbox {
+    font-size: 10px;
+  }
+  .collapsible {
+    font-size: 0.8rem;
+  }
+}
+
+/* Media query for waiver page */
+@media screen and (max-width: 470px) {
+  .download {
+    padding-top: 1rem;
+    display: block;
+    border-top: 5px solid black;
+  }
+  .feedback {
+    text-align: left;
+    font-size: 1.3rem;
+    padding-bottom: 20px;
+  }
+  .upload {
+    border-top: 5px solid black;
+    padding-top: 20px;
+  }
+  .waivers {
+    padding-bottom: 0.5rem;
+  }
+  .waiver-form {
+    border: none;
+    background-color: #e2e2e2;
+  }
+  .waiver-form label {
+    font-weight: bold;
+  }
+}
+
+/* Queries for the smaller phone sizes */
+@media (max-height: 450px) {
+  .side-drawer a {
+    font-size: 1rem;
+    padding: 0.7rem 0;
+    padding-left: 2.5rem;
+  }
+  .side-drawer-image {
+    height: 60%;
+    width: 60%;
+    margin-bottom: 1.5rem;
+    margin-left: 4rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .gdo2020 {
+    padding-left: 0.4rem;
+    padding-top: 0.1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .home-header {
+    font-size: 2.5rem;
+  }
+}

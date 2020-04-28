@@ -1,0 +1,199 @@
+<!-- Page by Matthew Hunt-->
+<!DOCTYPE html>
+<html class="home-background">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/master_gdo.css" rel="stylesheet" />
+    <link href="/fonts/font.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gotu&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="images/browsericon.png" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/js/master_gdo.js" type="text/javascript"></script>
+
+    <title>Home | Girl's Day Out</title>
+  </head>
+  <body>
+    <div class="overlay"></div>
+    <!-- start of toolbar-->
+    <header class="toolbar" id="toolbar">
+      <nav class="toolbar-images">
+        <div>
+          <button class="hamburger-button" id="hamburger" onclick="moveDrawer">
+            <div class="hamburger-button-line"></div>
+            <div class="hamburger-button-line"></div>
+            <div class="hamburger-button-line"></div>
+          </button>
+        </div>
+        <div class="gdo2020">
+          <p>Girl's Day Out 2020</p>
+        </div>
+        <div class="spacer"></div>
+        <div>
+          <img
+            src="/images/smallgdologo.png"
+            alt="Small Girl's Day Out Logo"
+            class="toolbar-logo"
+          />
+        </div>
+      </nav>
+    </header>
+    <!-- end of toolbar-->
+
+    <!-- Start of side drawer-->
+    <div>
+      <nav class="side-drawer" id="sidedrawer">
+        <ul>
+          <div>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/application">Apply</a>
+            </li>
+            <li>
+              <a href="/photogallery">Photo Gallery</a>
+            </li>
+            <li>
+              <a href="/contactus">Contact Us</a>
+            </li>
+            <li>
+              <a href="/faqs">FAQs</a>
+            </li>
+          </div>
+          <div class="spacer"></div>
+          <div>
+            <li class="image2">
+              <img
+                src="/images/gdologo.png"
+                alt="Girl's Day Out 2020 Logo"
+                class="side-drawer-image"
+              />
+            </li>
+          </div>
+        </ul>
+      </nav>
+      <div id="backdrop" onclick="moveDrawer"></div>
+    </div>
+    <!-- end of side drawer-->
+
+    <!-- start of div for content -->
+    <div class="home-content">
+      <div class="home-banner">
+        <img src="/images/homebanner.jpg" />
+        <h1 class="home-header">Girl's Day Out Summer Camp</h1>
+      </div>
+
+      <div class="home-block">
+        <div class="home-block-text">
+          <p>
+            Girl's Day Out (GDO) is a three-day, fun-filled event designed to
+            educate rising 8th and 9th grade girls on Science, Technology,
+            Engineering, and Math (STEM) related degrees and career
+            opportunities, all while having fun!
+            <strong>The camp is free for all students!</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="stem-images">
+        <div>
+          <h2 class="stem-caption">Science</h2>
+        </div>
+        <img src="/images/science.jpg" />
+      </div>
+
+      <div class="home-block">
+        <div class="home-block-text">
+          <p>
+            Girl's Day Out provides opportunities for participation in hands-on
+            STEM activities from a diverse spectrum of STEM organizations.
+            <br /><br />STEM professionals from businesses and organizations
+            throughout the lowcountry present interactive activities that bring
+            excitement and STEM relevance to many of the tools that are used in
+            their daily occupations. <br /><br />The professionals take the time
+            to share with the girls how they can have meaningful careers in the
+            fields of science, technology, engineering and mathematics.
+          </p>
+        </div>
+      </div>
+
+      <div class="stem-images">
+        <img src="/images/technology.jpg" />
+        <div>
+          <h2 class="stem-caption">Technology</h2>
+        </div>
+      </div>
+
+      <div class="home-block">
+        <div class="home-block-text">
+          <h3>Over the course of the camp, participants will</h3>
+          <ul>
+            <li>Tour the Bosch Laboratiories, a college campus, and museum</li>
+            <li>
+              Participate in hands-on computer science and cyber security
+              activities
+            </li>
+            <li>
+              Learn interpersonal skills and techniques for choosing appropriate
+              attire for all occasions
+            </li>
+            <li>Meet with college admissions advisors</li>
+            <li>Meet women in STEM careers</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="stem-images">
+        <div>
+          <h2 class="stem-caption">Engineering</h2>
+        </div>
+        <img src="/images/engineering.jpg" />
+      </div>
+
+      <div class="home-block">
+        <div class="home-block-text">
+          <p>
+            Girl's Day Out 2020 will be going virtual this year due to COVID-19.
+            Girl's Day Out <i>Virtual Edition</i> will be a blast! Stay tuned
+            for details.
+          </p>
+        </div>
+      </div>
+
+      <div class="stem-images">
+        <img src="/images/mathematics.jpg" />
+        <div>
+          <h2 class="stem-caption">Mathematics</h2>
+        </div>
+      </div>
+
+      <div class="home-block">
+        <div class="home-block-text">
+          <p>
+            We can't wait to see you for the Ninth Annual Girl's Day Out Summer
+            Camp!
+          </p>
+          <a href="/application"><button>Apply Here</button></a>
+        </div>
+      </div>
+
+      <div class="home-footer">
+        <p>
+          MISSION: To inspire, attract and empower girls to explore Science,
+          Technology, Engineering, & Mathematics (STEM) majors and careers.<br /><br />
+          Sponsored by Naval Information Warfare Center Atlantic (NIWC Atlantic)
+          via ONR, NUCOR Steel Berkeley, Bosch, Naval Health Clinic Charleston,
+          North Charleston Police Department, College of Charleston and Trident
+          Technical College via ACE, Girls’ Day Out (GDO) is designed to
+          inspire, educate and attract girls to pursue STEM careers.
+        </p>
+      </div>
+    </div>
+    <!-- end of div for content-->
+  </body>
+</html>
