@@ -1,0 +1,331 @@
+<!-- Navigation sidedrawer/toolbar by Matthew Hunt-->
+<!DOCTYPE html>
+<html class="home-background">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="/css/master_gdo.css" rel="stylesheet" />
+    <link href="/fonts/font.css" rel="stylesheet" />
+    <link rel="icon" href="images/browsericon.png" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/js/faq.js" type="text/javascript"></script>
+
+    <title>FAQ | Girl's Day Out</title>
+  </head>
+  <body>
+    <div class="overlay"></div>
+    <!-- start of toolbar-->
+    <header class="toolbar" id="toolbar">
+      <nav class="toolbar-images">
+        <div>
+          <button class="hamburger-button" id="hamburger" onclick="moveDrawer">
+            <div class="hamburger-button-line"></div>
+            <div class="hamburger-button-line"></div>
+            <div class="hamburger-button-line"></div>
+          </button>
+        </div>
+        <div class="gdo2020">
+          <p>Girl's Day Out 2020</p>
+        </div>
+        <div class="spacer"></div>
+        <div>
+          <img
+            src="images/smallgdologo.png"
+            alt="Small Girl's Day Out Logo"
+            class="toolbar-logo"
+          />
+        </div>
+      </nav>
+    </header>
+    <!-- end of toolbar-->
+
+    <!-- Start of side drawer-->
+    <div>
+      <nav class="side-drawer" id="sidedrawer">
+        <ul>
+          <div>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/application">Apply</a>
+            </li>
+            <li>
+              <a href="/photogallery">Photo Gallery</a>
+            </li>
+            <li>
+              <a href="/contactus">Contact Us</a>
+            </li>
+            <li>
+              <a href="/faqs">FAQs</a>
+            </li>
+          </div>
+          <div class="spacer"></div>
+          <div>
+            <li class="image2">
+              <img
+                src="images/gdologo.png"
+                alt="Girl's Day Out 2020 Logo"
+                class="side-drawer-image"
+              />
+            </li>
+          </div>
+        </ul>
+      </nav>
+      <div id="backdrop" onclick="moveDrawer"></div>
+    </div>
+    <!-- end of side drawer-->
+
+    <!-- start of div for content -->
+    <div class="content">
+      <div class="faq">
+        <h1>Frequently Asked Questions</h1>
+
+        <br />
+
+        <input
+          type="text"
+          class="searchbox"
+          id="searchFaq"
+          onkeyup="searchFaq()"
+          placeholder="Search Frequently Asked Questions.."
+          title="Type in a keyword for a question you may have"
+        /><br />
+        <button id="expandall" class="expand">Expand All</button>
+        <button id="collapseall" class="expand">Collapse All</button><br />
+        <button class="collapsible">Is the camp FREE?</button>
+        <div class="answer">
+          <p>
+            Yes!! The camp is free to all rising 8th and 9th grade girl(s).
+            Housing and all meals are included.
+          </p>
+        </div>
+
+        <button class="collapsible">
+          How does my daughter(s) get accepted into the camp?
+        </button>
+        <div class="answer">
+          <p>
+            All students must apply for the camp online through this website. A
+            completed application consists of the following: Completed online
+            registration form, College of Charleston Liability Release and
+            Waiver, and Bosch Waiver and Release of Liability. All applications
+            must be completed and submitted by (***application due date***).
+            Girls are accepted on a first come first serve basis. Students will
+            be notified of their acceptance by (***acceptance date***).
+          </p>
+        </div>
+
+        <button class="collapsible">
+          Where do I drop-off and pick-up my daughter(s)?
+        </button>
+        <div class="answer">
+          <p>
+            Information about pick-up and drop-off locations will be sent
+            directly to the parent(s) when approved for Girl’s Day Out 2020.<br /><br />
+            For Security Purposes, Parent(s) are
+            <strong><u>REQUIRED</u></strong> to sign his/her daughter(s) in/out
+            of the camp. If your daughter is riding home with a friend or family
+            member, please notify Camp Coordinators by July 20, 2020.
+          </p>
+        </div>
+
+        <button class="collapsible">
+          Will there be a security guard at the residence hall?
+        </button>
+        <div class="answer">
+          <p>
+            Yes, there will be a state security officer sitting at the front
+            desk of the residence hall.
+          </p>
+        </div>
+
+        <button class="collapsible">
+          What if my daughter(s) loses her key?
+        </button>
+        <div class="answer">
+          <p>
+            <strong><u>Room Keys</u></strong
+            >: All girls will receive a room key & key fob which are required to
+            enter and exit the building. There is a
+            <strong>$100 fee</strong>
+            to replace a lost key or key fob. Girls will be given pouches that
+            can be placed around their necks to store the keys.
+          </p>
+        </div>
+
+        <button class="collapsible">
+          What should my daughter(s) wear?
+        </button>
+        <div class="answer">
+          <p>
+            <strong><u>Thursday Dress Code</u></strong
+            >: The girls will be visiting the Bosch facility on
+            <strong>****date here****</strong>. All girls are
+            <strong>REQUIRED</strong> to wear
+            <strong
+              ><u
+                >pants below the knees, shirts with a sleeve, and closed-toe
+                shoes</u
+              ></strong
+            >
+            for the tour. The Dress code is in accordance to Bosch Safety
+            Policy. If your daughter is not dressed appropriately, she will not
+            be able to participate in the tour.
+            <br /><br />
+            <strong><u>Friday Dress Code</u></strong
+            >: Girls may wear shorts, jeans, or pants as bottoms. We recommend
+            that girls wear tennis shoes, sandals, or other comfortable walking
+            shoes. <br /><br />
+            <strong><u>Saturday Dress Code</u></strong
+            >: Girls will receive a GDO Summer Camp t-shirt at registration on
+            <strong>****date here****</strong>. All girls are
+            <strong>REQUIRED</strong> to wear the t-shirt on
+            <strong>****date here****</strong>
+            as the official camp uniform. Girls may wear shorts, jeans, or pants
+            as bottoms. We recommend that girls wear tennis shoes, sandals, or
+            other comfortable walking shoes.
+          </p>
+        </div>
+
+        <button class="collapsible">
+          Can my daughter(s) have her phone?
+        </button>
+        <div class="answer">
+          <p>
+            During the sessions, the campers will not be able to use their
+            phones. Girls will only be permitted to use phones during breaks and
+            free time.
+          </p>
+        </div>
+
+        <button class="collapsible">
+          Are the meals included?
+        </button>
+        <div class="answer">
+          <p>
+            The camp will provide food (breakfast, lunch, dinner and snacks) for
+            the girls. If your daughter has any special dietary needs, please
+            inform GDO Camp Coordinators via email by
+            <strong>***insert date here***</strong>, if it was not included in
+            the application.
+          </p>
+        </div>
+
+        <button class="collapsible">
+          What if my daughter(s) take medication?
+        </button>
+        <div class="answer">
+          <p>
+            If your daughter takes medication, please inform GDO camp
+            coordinators via email by <strong>***insert date here***</strong>,
+            if it was not included in the application. Upon check-in, please
+            ensure that your daughter leaves her medication with the
+            registration desk. The GDO staff will not administer the medication
+            to your daughter. However, a registered nurse will be on staff and
+            will be able to monitor your daughter take her the medicine.
+          </p>
+        </div>
+
+        <button class="collapsible">
+          Can my daughter(s) room with her friend?
+        </button>
+        <div class="answer">
+          <p>
+            Girls will be randomly assigned to their room based on age and
+            grade. Girls are randomly assigned to rooms to prevent bullying and
+            cliques. This allows the girls to meet new people, and to provide
+            them with a true college experience. Often, when girls attend
+            college, they are not able to choose a roommate.
+          </p>
+        </div>
+
+        <button class="collapsible">
+          What are the parent requirements?
+        </button>
+        <div class="answer">
+          <p>
+            Parents are required to sign his/her daughter(s) in/out of the camp
+            daily. Parents will also be responsible for watching a 2-3 minute
+            video at check-in on <strong>***insert date here***</strong> and
+            signing a consent form. The video contains important information
+            each parent will need to know about the camp. <br /><br />
+            Parents are not required to attend the entire camp. However, a
+            parent session is held on <strong>***insert date here***</strong> in
+            the College of Charleston School of Science and Mathematics Building
+            (202 Calhoun Street). Parents are asked to join their daughters for
+            a short program and a complimentary lunch. The program will consist
+            of a parent-only session and an awards ceremony. See details of
+            parent session below: <br /><br />
+            GDO Parent Session <br />
+            <strong>• College Information Session:</strong> The session will
+            consist of local colleges briefly providing an overview of their
+            college and programs of register. Following introductions, a
+            moderated question and answer session will begin. Each College
+            representative will be prepared to address the following type of
+            questions: cost of tuition, courses they should focus on in high
+            school, scholarship information, etc. <br />
+            <strong>• Cyber Security Session:</strong> The session will consist
+            of an overview of popular apps, impact of a child’s cyber profile on
+            her future, trafficking, sexting and laws associated with sexting.
+          </p>
+        </div>
+
+        <button class="collapsible">
+          What should my daughter(s) bring?
+        </button>
+        <div class="answer">
+          <p>
+            <strong
+              >GIRLS ARE ONLY ALLOWED TO BRING ONE CARRY ON SIZE LUGGAGE AND ONE
+              PERSONAL ITEM (SUCH AS A PILLOW). SEE CHECKLIST FOR A LIST OF
+              ITEMS TO BRING</strong
+            >
+          </p>
+        </div>
+
+        <button class="collapsible">
+          Who should I call if I have questions?
+        </button>
+        <div class="answer">
+          <p>
+            Please visit the <a href="contactus">Contact Us</a> page if you have
+            any questions or concerns. A number will be provided prior to the
+            camp in case of emergencies.
+          </p>
+        </div>
+
+        <button class="collapsible">
+          Where do I sign the Waiver and Liability Release forms?
+        </button>
+        <div class="answer">
+          <p>
+            You will be able to sign and submit these forms after submitting the
+            application. If you have already done so, and did not submit these
+            forms, please check the application verification e-mail you received
+            for a link. If you submitted an application and did not get an
+            e-mail, please
+            <a href="contactus">Contact Us</a>.
+          </p>
+        </div>
+
+        <button class="collapsible">
+          Where can I check the status of my daughter(s) application?
+        </button>
+        <div class="answer">
+          <p>
+            A link was sent in the application verification e-mail you received
+            after submitting your daughter's application. If you submitted an
+            application and did not receive any e-mails from us, please
+            <a href="contactus">Contact Us</a>.
+          </p>
+        </div>
+
+        <br /><br />
+      </div>
+      <!-- end of div for faq -->
+    </div>
+    <!-- end of div for content-->
+  </body>
+</html>

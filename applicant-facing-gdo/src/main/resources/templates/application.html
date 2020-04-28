@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!--Form By Yasmin Coker-->
+<!--Navigation sidedrawer and toolbar by Matthew Hunt -->
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="icon" href="images/browsericon.png">
+	<link href="/css/master_gdo.css" rel="stylesheet">
+	<link href="/fonts/font.css" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- jquery import that searches school dropdown -->
+	<script src='https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js' defer></script>
+
+	<script src="/js/application.js" type="text/javascript"></script>
+
+	<!-- css for jquery import that searches school dropdown -->
+	<link href='/css/schooldropdown.css' rel='stylesheet' type='text/css'>
+	
+	<title>Apply | Girl's Day Out</title>
+
+</head>
+<body>
+	<!-- start of toolbar-->
+	<header class="toolbar" id="toolbar">
+		<nav class="toolbar-images">
+			<div>
+				<button class="hamburger-button" id="hamburger" onclick="moveDrawer">
+					<div class="hamburger-button-line"></div>
+					<div class="hamburger-button-line"></div>
+					<div class="hamburger-button-line"></div>
+				</button>
+			</div>
+			<div class="gdo2020">
+				<p>Girl's Day Out 2020</p>
+			</div>
+			<div class="spacer"></div>
+			<div>
+				<img
+				src="images/smallgdologo.png"
+				alt="Small Girl's Day Out Logo"
+				class="toolbar-logo"
+			  />
+			</div>
+		</nav>
+	</header>
+	<!-- end of toolbar-->
+
+	<!-- Start of side drawer-->
+	<div>
+		<nav class="side-drawer" id="sidedrawer">
+		  <ul>
+			<div class="links">
+				<li>
+					<a href="/">Home</a>
+				</li>
+				<li>
+					<a href="/application">Apply</a>
+				</li>
+				<li>
+					<a href="/photogallery">Photo Gallery</a>
+				</li>
+				<li>
+					<a href="/contactus">Contact Us</a>
+				</li>
+				<li>
+					<a href="/faqs">FAQs</a>
+				</li>
+			</div>
+			<div class="spacer"></div>
+			<div>
+			  <li class="side-drawer-image-container">
+				<img
+				  src="images/gdologo.png"
+				  alt="Girl's Day Out 2020 Logo"
+				  class="side-drawer-image"
+				/>
+			  </li>
+			</div>
+		  </ul>
+		</nav>
+		<div id="backdrop" onclick="moveDrawer"></div>
+	</div>
+	<!-- end of side drawer-->
+	  
+	<!-- start of div for content -->
+	<div class="content">
+
+		<!-- Start of form -->
+		<form id="signInForm" action="/application/submit" method="post" class="form">
+			
+			<!-- Header of application page -->
+			<div style="text-align: center;">
+				<h1>Sign Up for Girl's Day Out</h1>
+			</div>
+			
+			<!-- Start of participant section of form -->
+			<div class="form-section-container">
+				<h2>Participant Information</h2>
+
+				<div class="participant-section">
+					<div class="flex-section">
+						<label for "lName"><span style="color:red;">*</span>Last Name: </label><br>
+						<input type="text" id="lName" name="lName" required><br>
+		
+						<label for "fName"><span style="color:red;">*</span>First Name: </label><br>
+						<input type="text" id="fName" name="fName" required><br>
+		
+						<label for "email"><span style="color:red;">*</span>Email Address: </label><br>
+						<input type="email" id="email" name="email" placeholder="email@example.com" required>
+		
+						<label for "school"><span style="color:red;">*</span>School (if not found select "Other")</label><br>
+						<div class="school-dropdown">
+							<select id="school-dropdown" name="fallSchool" onchange="showOtherTextBox()" required>
+								<!-- Inserted by JS from DB -->
+							</select>
+						</div>
+						
+						<div id="otherTextbox"><label for "otherSchool"><span style="color:red;">*</span>Other School: </label><br>
+						<input type="text" id="otherSchool" name="writeInSchool" required></div>
+
+						<label for "dob"><span style="color:red;">*</span>Date of Birth: </label><br>
+						<input type="date" id="date" name="dateOfBirth" required>
+						
+						<label for "phone"><span style="color:red;">*</span>Phone #: </label><br>
+						<input type="tel" id="phone"  name="phoneNumber" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+						
+						<label for "college">College of Interest: </label><br>
+						<input type="text" id="college" name="collegeOfInterest">
+
+						<label for "allerList">Please List Any Allergies: <div id="aller-chars"> <!-- Inserted by JS --></div></label>
+						<textarea id="allerList" rows="5" cols="40" maxlength="500" name="allergies" onkeyup="countAllerChars(this)"></textarea>
+						
+						<label for "meds">Please List Any Medications: <div id="med-chars"> <!-- Inserted by JS --></div></label>
+						<textarea id="meds" rows="5" cols="40" maxlength="500" name="medications" onkeyup="countMedChars(this)"></textarea>
+						
+					</div>
+
+					<div class="flex-section">
+						<label for "addr"><span style="color:red;">*</span>Address: </label><br>
+						<input type="text" id="addr" name="address" required>
+						
+						<label for "city"><span style="color:red;">*</span>City: </label><br>
+						<input type="text" id="city" name="city" required>
+
+						<label for "state"><span style="color:red;">*</span>State: </label><br>
+						<select id="state-dropdown" name="state" required></select>
+						
+						<label for "zip"><span style="color:red;">*</span>Zip Code: </label><br>
+						<input type="number" id="zip"  name="zipCode" placeholder="00000" pattern="/^[0-9]{5,5}$/" required>
+						
+						<label for="risingGradeLevel"><span style="color:red;">*</span>Rising Grade Level: </label><br>
+						<select id="risingGradeLevel" name="risingGradeLevel" required>
+							<option value="">-- Choose Grade --</option>
+							<option value="8th">8th Grade</option>
+							<option value="9th">9th Grade</option>
+						</select>
+
+						<label id="shirtSize"><span style="color:red;">*</span>T-Shirt Size</label><br>
+						<select name="shirtSize" id="shirtSize" required>
+							<option value="">-- Choose Shirt Size --</option>
+							<option value="XS">XS</option>
+							<option value="S">S</option>
+							<option value="M">M</option>
+							<option value="L">L</option>
+							<option value="XL">XL</option>
+							<option value="XXL">XXL</option>
+						</select>
+
+						<br>
+
+						<label for "militaryRelatives">Do you have relatives in the military?</label><br>
+						<input type="radio" id="militaryRelativesY" name="militaryRelatives" value="Yes" onclick="showDropdown('milBranch', 'militaryRelatives', 'milDropdown')">
+						<label for="militaryRelativesY">Yes</label>
+						<input type="radio" id="militaryRelativesN" name="militaryRelatives" value="No" onclick="showDropdown('milBranch', 'militaryRelatives', 'milDropdown')">
+						<label for="militaryRelativesN">No</label>
+						<div id="milBranch"><label for "milBranch"><span style="color:red;">*</span>Military Branch: </label><br>
+						<select name="milBranch" id="milDropdown">
+							<option value="">--Select Branch--</option>
+							<option value="Air Force">Air Force</option>
+							<option value="Army">Army</option>
+							<option value="Coast Guard">Coast Guard</option>
+							<option value="Marine Corps">Marine Corps</option>
+							<option value="National Guard">National Guard</option>
+							<option value="Navy">Navy</option>
+						</select>
+						</div>
+						<br>
+
+						<label for="parentsCollege">Did your parents go to college?</label><br>
+						<input type="radio" id="parentsCollegeY" name="parentsCollege" value="Yes" onclick="showDropdown('eduLevel', 'parentsCollege', 'eduLevelDropdown')">
+						<label for="parentsCollegeY">Yes</label>
+						<input type="radio" id="parentsCollegeN" name="parentsCollege" value="No" onclick="showDropdown('eduLevel', 'parentsCollege', 'eduLevelDropdown')">
+						<label for="parentsCollegeN">No</label>
+						<div id="eduLevel"><label for "eduLevel"><span style="color:red;">*</span>Education Level: </label><br>
+						<select name="eduLevel" id="eduLevelDropdown">
+							<option value="">--Education Level--</option>
+							<option value="Associate">Associate Degree</option>
+							<option value="Bachelor's">Bachelor's Degree</option>
+							<option value="Master's">Master's Degree</option>
+							<option value="Doctoral">Doctoral Degree</option>
+						</select>
+						</div>
+
+					</div> <!-- end of flex-section div -->
+				</div> <!-- end of form-section div -->
+
+				<fieldset>
+					<legend>Tell us in which STEM areas you are interested:</legend>
+					<input type="checkbox" name="checkbox[]" value="1">Science<br>
+					<input type="checkbox" name="checkbox[]" value="2">Technology<br>
+					<input type="checkbox" name="checkbox[]" value="3">Engineering<br>
+					<input type="checkbox" name="checkbox[]" value="4">Mathematics<br>
+				</fieldset>
+			</div>
+			<!-- End of participant section of form -->
+				
+			<!-- Start of parent/guardian section of form -->
+			<div class="form-section-container">
+				<h2>Parent/Guardian Information</h2>
+
+				<div class="parent-section">
+					<div class="flex-section">
+						<label for "pLName1"><span style="color:red;">*</span>Parent/Guardian Last Name: </label><br>
+						<input type="text" id="pLName1" name="priParentLName">
+
+						<label for "pFName1"><span style="color:red;">*</span>First Name:</label>
+						<input type="text" id="pFName1" name="priParentFName">
+
+						<label for "pEmail1"><span style="color:red;">*</span>Email Address: </label><br>
+						<input type="email" id="pEmail1" name="priParentEMail" placeholder="email@example.com" required>
+
+						<label for "priPhone1"><span style="color:red;">*</span>Primary Phone #: </label><br>
+						<input type="tel" id="priPhone1" name="priParentPrimaryPhone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+						
+						<label for "altPhone1">Alternate Phone #: </label><br>
+						<input type="tel" id="altPhone1" name="priParentAltPhone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" >
+					</div>
+
+					<div class="flex-section">
+						<label for "pAddr1"><span style="color:red;">*</span>Address: </label><br>
+						<input type="text" id="pAddr1" name="priParentAddress" required>
+
+						<label for "pCity1"><span style="color:red;">*</span>City: </label><br>
+						<input type="text" id="pCity1" name="priParentCity" required>
+
+						<label for "pState1"><span style="color:red;">*</span>State: </label><br>
+						<select id="pState1" name="priParentState" required></select>
+
+						<label for "pZip1"><span style="color:red;">*</span>Zip Code: </label><br>
+						<input type="number" id="pZip1" name="priParentZipCode" placeholder="00000" pattern="/^[0-9]{5,5}$/" required>
+					</div>	
+				</div>
+
+				<h3>If applicable, please enter a second parent/guardian</h3>
+				<div class="parent-section">
+					<div class="flex-section">
+						<label for "pLName2">Parent/Guardian Last Name: </label><br>
+						<input type="text" id="pLName2" name="altParentLName">
+
+						<label for "pFName2">First Name: </label><br>
+						<input type="text" id="pFName2" name="altParentFName">
+
+						<label for "pEmail2">Email Address: </label><br>
+						<input type="email" id="pEmail2" name="altParentEMail" placeholder="email@example.com">
+
+						<label for "priPhone2">Primary Phone #: </label><br>
+						<input type="tel" id="priPhone2" name="altParentPrimaryPhone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" >
+						
+						<label for "altPhone2">Alternate Phone #: </label><br>
+						<input type="tel" id="altPhone2" name="altParentAltPhone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" >
+						
+					</div>
+
+					<div class="flex-section">
+						<label for "pAddr2">Address: </label><br>
+						<input type="text" id="pAddr2" name="altParentAddress">
+						
+						<label for "pCity2">City: </label><br>
+						<input type="text" id="pCity2" name="altParentCity">
+						
+						<label for "pState2">State: </label><br>
+						<select id="pState2"  name="altParentState"></select>
+						
+						<label for "pZip2">Zip Code: </label><br>
+						<input type="number" id="pZip2"  name="altParentZipCode" placeholder="00000" pattern="/^[0-9]{5,5}$/">
+					</div>
+					
+				</div>
+			</div>
+			<!-- End of parent/guardian section of form -->
+			
+			<!-- Start of emergency contact section of form -->
+			<div class="form-section-container">
+				<h2>Emergency Contact and Release Authorization</h2>
+
+				<div class="contact-section">
+					<div class="flex-section">
+						<label for "emName"><span style="color:red;">*</span>Name: </label><br>
+						<input type="text" id="emName" name="contactName" required>
+						
+						<label for "relationship"><span style="color:red;">*</span>Relationship to child: </label><br>
+						<input type="text" id="relationship" name="relationship" required>
+						
+						<label for "emPriPhone"><span style="color:red;">*</span>Primary Phone #: </label><br>
+						<input type="tel" id="emPriPhone" name="contactPrimaryPhone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+						
+						<label for "emAltPhone">Alternate Phone #: </label><br>
+						<input type="tel" id="emAltPhone" name="contactAltPhone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" >
+					</div>
+					<div class="flex-section">
+						<label for "emAddr"><span style="color:red;">*</span>Address: </label><br>
+						<input type="text" id="emAddr" name="contactAddress" required>
+						
+						<label for "emCity"><span style="color:red;">*</span>City: </label><br>
+						<input type="text" id="emCity" name="contactCity" required>
+						
+						<label for "emState"><span style="color:red;">*</span>State: </label><br>
+						<select id="emState" name="contactState" required></select>
+						
+						<label for "emZip"><span style="color:red;">*</span>Zip Code: </label><br>
+						<input type="number" id="emZip" placeholder="00000" name="contactZipCode" required>
+					</div>
+				</div>
+			</div>
+			<!-- End of emergency contact section of form -->
+
+			<!-- Div for application form submit button-->
+			<div style="text-align: center; margin: 20px 0;">
+				<input type="submit" value="Submit Application" id="submitBtn" class="app-submit-btn">
+			</div>
+			
+		</form> <!-- End of form -->
+	</div> <!-- end of div for content-->
+</body>
+</html>
+	
